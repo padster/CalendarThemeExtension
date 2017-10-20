@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Google Wall Calendar",
+  "version": "0.1.0",
+  "description": "Adds background images to Google Calendar",
+
+  "content_scripts": [{
+    "matches": ["https://calendar.google.com/calendar/r/*"],
+    "js": ["content.js"],
+    "css": ["style.css"]
+  }],
+
+  "permissions": [
+    "storage"
+  ],
+
+  "options_page": "options.html"
+}
