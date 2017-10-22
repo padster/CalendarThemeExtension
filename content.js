@@ -1,3 +1,6 @@
+var FAB_CLASS = 'zlaSJd';
+
+// TODO - make a nicer URL
 var DEFAULT_IMAGE_URL =
     'https://lh3.googleusercontent.com/BPPMcW7KfZNOZJM3QNHhye8LtE0pV1bh6vgC9Q7U4bpRfYEZF2' +
     'zczlVQxh3RvhNPKo5RnqoLDGjJJKbsapEXmtkHVar_eRUnWOHK8o9b5w1wyEO72Yn3-H3-dyxgyejHESSno1' +
@@ -20,7 +23,7 @@ function createImageDOM() {
   return imgHolder;
 }
 
-function install() {
+function installImage() {
   var banner = document.getElementById('gb');
   var imageDOM = createImageDOM();
   banner.parentElement.insertBefore(imageDOM, banner);
@@ -29,6 +32,30 @@ function install() {
   }, function(items) {
     document.getElementById('xtnImg').style.backgroundImage = "url('" +  items.imageURL + "')";
   });
+}
+
+function createSettingsButtonDOM() {
+  var button = document.createElement('a');
+  button.id = 'xtnBtn';
+  button.className = FAB_CLASS;
+  var buttonContent = document.createElement('div');
+  buttonContent.id = 'xtnBtnContent'
+  buttonContent.className = 'XHsn7e Gw6Zhc';
+  button.appendChild(buttonContent);
+  button.href = 'chrome-extension://' + chrome.runtime.id + '/options.html';
+  button.target = '_blank';
+  return button;
+}
+
+function installSettingsButton() {
+  var addButton = document.querySelector('.' + FAB_CLASS);
+  var newButton = createSettingsButtonDOM();
+  addButton.parentElement.insertBefore(newButton, addButton);
+}
+
+function install() {
+  installImage();
+  installSettingsButton();
 }
 
 install();

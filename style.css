@@ -18,6 +18,21 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+#xtnBtn {
+  bottom: 96px;
+}
+
+#xtnBtnContent {
+  background-color: rgba(0,0,0,0.5);
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#xtnBtnContent:before {
+  content: 'image';
+}
+
 /* Existing color modifications */
 
 #gb > div,
@@ -38,6 +53,11 @@
 .uQ1ixe .snByac,
 .NI2kfb {
   color: black !important;
+}
+
+/* Event-page */
+.Xro3Db-nUpftc.ymbhmd {
+  background-color: rgba(255,255,255,0.8) !important;
 }
 
 /* Day picker */
