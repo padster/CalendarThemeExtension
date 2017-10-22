@@ -1,11 +1,9 @@
+/* Image elements */
+
 #xtnImgHolder, #xtnImg, #xtnImgFade {
   position: absolute;
   width: 100%;
   height: 100%;
-}
-
-#xtnImgHolder {
-
 }
 
 #xtnImg {
@@ -20,11 +18,13 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Existing color modifications */
 
-
-/* */
-
-#gb > div {
+#gb > div,
+.AOL3Kb,
+.JE11kf,
+.GENA3c,
+.YvjgZe.F262Ye:after  {
   background-color: rgba(255,255,255,0.1) !important;
 }
 
@@ -32,21 +32,24 @@
   background-color: transparent !important;
 }
 
-.YvjgZe.F262Ye:after {
-  background-color: rgba(255,255,255,0.3) !important;
-}
-.GENA3c {
-  background-color: rgba(255,255,255,0.3) !important;
-}
 .rpCPrc > div,
 .MSZkRb,
 .zRt28b,
-.uQ1ixe .snByac {
+.uQ1ixe .snByac,
+.NI2kfb {
   color: black !important;
 }
 
+/* Day picker */
+
+.HkPXyb {
+  background-color: rgba(255,255,255,0.3) !important;
+}
 .W0m3G .r4nke {
   width: auto !important;
+  background-color: transparent !important;
   border-radius: 0 !important;
-  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+.W0m3G .r4nke:hover {
+  background-color: rgba(0,0,0,0.1) !important;
 }
