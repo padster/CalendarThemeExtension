@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "description": "Adds background images to Google Calendar",
 
+  "icons": { "128": "icon128.png" },
+
   "content_scripts": [{
     "matches": ["https://calendar.google.com/calendar/r/*"],
     "js": ["content.js"],
