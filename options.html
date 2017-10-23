@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head><title>Google Calendar background image options</title></head>
+<head>
+  <title>Google Wall Calendar options</title>
+  <style>
+    html, head, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+    .field {
+      display: flex;
+      align-items: center;
+      height: 3em;
+    }
+    .title {
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+    }
+    .input {
+      display: flex;
+      flex-grow: 1;
+    }
+    .input input {
+      height: 2.4em;
+      padding: 0 12px;
+      flex-grow: 1;
+    }
+    button {
+      float: right;
+      margin: 8px;
+      line-height: 2em;
+      cursor: pointer;
+    }
+    #demo {
+      width: 60%;
+      height: 60%;
+      margin: 0 auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+    #status {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 8px;
+      font-size: 20px;
+      color: white;
+      background-color: black;
+    }
+  </style>
+</head>
 <body>
 
-Image URL: <br />
-<input id="url" type="url" style="width: 100%"></input>
-<button id="save">Save</button>
-<div id="status"></div>
+  <h1>Google Wall Calendar options</h1>
+  <div>
+    <div class="field">
+      <div class="title">Image URL:</div>
+      <div class="input">
+        <input id="url" type="url"/>
+      </div>
+    </div>
+    <button id="save">Save</button>
+    <div id="status"></div>
+  </div>
+  <div id="demo"></div>
 
-<script src='options.js'></script>
+  <script src='options.js'></script>
 </body>
 </html>
