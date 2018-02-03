@@ -1,5 +1,33 @@
 var FAB_CLASS = 'zlaSJd';
-var DEFAULT_IMAGE_URL = 'http://static.useit.today/wallCalendarImg/October.jpg';
+var DEFAULT_IMAGE_URLS = [
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/January.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/February.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/March.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/April.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/May.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/June.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/July.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/August.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/September.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/October.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/November.jpg',
+  '//storage.googleapis.com/static.useit.today/wallCalendarImg/December.jpg',
+];
+
+function setImageStyle() {
+  var currentMonth = new Date().getMonth();
+  chrome.storage.sync.get({
+    imageURL: DEFAULT_IMAGE_URLS
+  }, function(items) {
+    var imageArray = items.imageURL;
+    if (!Array.isArray(imageArray)) {
+      imageArray = [imageArray];
+    }
+    var currentMonth = new Date().getMonth();
+    var currentImage = imageArray[currentMonth % imageArray.length];
+    document.getElementById('xtnImg').style.backgroundImage = "url('" +  currentImage + "')";
+  });
+}
 
 function createImageDOM() {
   var imgHolder = document.createElement('div');
@@ -14,14 +42,12 @@ function createImageDOM() {
 }
 
 function installImage() {
+  console.log("Installing Calendar background extension...");
   var banner = document.getElementById('gb');
   var imageDOM = createImageDOM();
   banner.parentElement.insertBefore(imageDOM, banner);
-  chrome.storage.sync.get({
-    imageURL: DEFAULT_IMAGE_URL
-  }, function(items) {
-    document.getElementById('xtnImg').style.backgroundImage = "url('" +  items.imageURL + "')";
-  });
+  setImageStyle();
+  window.addEventListener('focus', function(e) { setImageStyle(); });
 }
 
 function createSettingsButtonDOM() {

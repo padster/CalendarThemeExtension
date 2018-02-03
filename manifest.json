@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Google Wall Calendar",
-  "version": "0.1.0",
+  "name": "Custom Calendar Background",
+  "version": "0.3.0",
   "description": "Adds background images to Google Calendar",
 
   "icons": { "128": "icon128.png" },

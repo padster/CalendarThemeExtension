@@ -1,7 +1,7 @@
 /* Image elements */
 
 #xtnImgHolder, #xtnImg, #xtnImgFade {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
 }
@@ -35,8 +35,8 @@
 
 /* Existing color modifications */
 
+#gb,
 #gb > div,
-.AOL3Kb,
 .JE11kf,
 .GENA3c,
 .YvjgZe.F262Ye:after,
@@ -45,8 +45,15 @@
   background-color: rgba(255,255,255,0.1) !important;
 }
 
+.AOL3Kb {
+  background-color: rgba(255,255,255,0.3) !important;
+}
+
 .Xro3Db-nUpftc > div {
   background-color: transparent !important;
+}
+.Xro3Db-nUpftc > div[role="menu"] {
+  background-color: white !important;
 }
 
 .rpCPrc > div,
@@ -61,6 +68,12 @@
 .Xro3Db-nUpftc.ymbhmd,
 .MDfQ7 {
   background-color: rgba(255,255,255,0.8) !important;
+}
+
+.leOeGd {
+  border-width: 8px;
+  border-style: solid;
+  border-image: linear-gradient(to top, rgba(255,255,255,0.3), rgba(255,255,255,0) 6%) 1;
 }
 
 /* Day picker */

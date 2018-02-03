@@ -48,16 +48,81 @@
       color: white;
       background-color: black;
     }
+    .options {
+      padding-bottom: 1.5em;
+    }
+    label {
+      font-size: 16px;
+      height: 24px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
   <h1>Google Wall Calendar options</h1>
   <div>
-    <div class="field">
-      <div class="title">Image URL:</div>
-      <div class="input">
-        <input id="url" type="url"/>
+    <div class="options">
+      <label><input id="t1" type="radio" name="type">Single Image</label>
+      <label><input id="t2" type="radio" name="type">Monthly Images</label>
+    </div>
+    <div id="t1Fields">
+      <div class="field">
+        <div class="title">Image URL:</div>
+        <div class="input">
+          <input id="url" type="url"/>
+        </div>
+      </div>
+    </div>
+    <div id="t2Fields">
+      <div class="field">
+        <div class="title">January:</div>
+        <div class="input"><input id="urlMonth0" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">Februrary:</div>
+        <div class="input"><input id="urlMonth1" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">March:</div>
+        <div class="input"><input id="urlMonth2" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">April:</div>
+        <div class="input"><input id="urlMonth3" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">May:</div>
+        <div class="input"><input id="urlMonth4" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">June:</div>
+        <div class="input"><input id="urlMonth5" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">July:</div>
+        <div class="input"><input id="urlMonth6" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">August:</div>
+        <div class="input"><input id="urlMonth7" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">September:</div>
+        <div class="input"><input id="urlMonth8" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">October:</div>
+        <div class="input"><input id="urlMonth9" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">November:</div>
+        <div class="input"><input id="urlMonth10" type="url"/></div>
+      </div>
+      <div class="field">
+        <div class="title">December:</div>
+        <div class="input"><input id="urlMonth11" type="url"/></div>
       </div>
     </div>
     <button id="save">Save</button>
