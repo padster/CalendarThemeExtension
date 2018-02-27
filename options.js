@@ -120,6 +120,27 @@ function saveOptions() {
   }
 }
 
+/** Change the single URL tab back to the default path. */
+function resetSingleOption() {
+  document.getElementById('url').value = DEFAULT_IMAGE_URLS[0];
+}
+
+/** Change the all month paths to their default URLs. */
+function resetMonthOptions() {
+  for (var i = 0; i < 12; i++) {
+    document.getElementById('urlMonth' + i).value = DEFAULT_IMAGE_URLS[i];
+  }
+}
+
+/** Reset current URLs to their defaults. */
+function resetOptions() {
+  if (!!document.getElementById('t1').checked) {
+    resetSingleOption();
+  } else {
+    resetMonthOptions();
+  }
+}
+
 /** Set tab after a radio button was selected. */
 function changeTab(e) {
   setTab(e.target.id);
@@ -127,5 +148,6 @@ function changeTab(e) {
 
 document.addEventListener('DOMContentLoaded', loadOptions);
 document.getElementById('save').addEventListener('click', saveOptions);
+document.getElementById('reset').addEventListener('click', resetOptions);
 document.getElementById('t1').addEventListener('change', changeTab);
 document.getElementById('t2').addEventListener('change', changeTab);

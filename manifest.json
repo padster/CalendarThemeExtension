@@ -2,13 +2,13 @@
   "manifest_version": 2,
 
   "name": "Custom Calendar Background",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Adds background images to Google Calendar",
 
   "icons": { "128": "icon128.png" },
 
   "content_scripts": [{
-    "matches": ["https://calendar.google.com/calendar/r/*"],
+    "matches": ["https://calendar.google.com/calendar/*"],
     "js": ["content.js"],
     "css": ["style.css"]
   }],
