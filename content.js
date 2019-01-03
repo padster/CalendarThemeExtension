@@ -1,4 +1,7 @@
-var FAB_CLASS = 'zlaSJd';
+// var FAB_CLASS = 'zlaSJd';
+var BUTTON_HOLDER_CLASS = 'uW9umb';
+var TOP_BUTTONS_CLASS = 'd6McF';
+
 var DEFAULT_IMAGE_URLS = [
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/January.jpg',
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/February.jpg',
@@ -53,10 +56,11 @@ function installImage() {
 function createSettingsButtonDOM() {
   var button = document.createElement('a');
   button.id = 'xtnBtn';
-  button.className = FAB_CLASS;
+  button.className = TOP_BUTTONS_CLASS;
+  button.title = 'Background';
   var buttonContent = document.createElement('div');
   buttonContent.id = 'xtnBtnContent'
-  buttonContent.className = 'XHsn7e Gw6Zhc';
+  buttonContent.className = 'Gw6Zhc';
   button.appendChild(buttonContent);
   button.href = 'chrome-extension://' + chrome.runtime.id + '/options.html';
   button.target = '_blank';
@@ -64,9 +68,9 @@ function createSettingsButtonDOM() {
 }
 
 function installSettingsButton() {
-  var addButton = document.querySelector('.' + FAB_CLASS);
+  var addButton = document.querySelector('.' + BUTTON_HOLDER_CLASS);
   var newButton = createSettingsButtonDOM();
-  addButton.parentElement.insertBefore(newButton, addButton);
+  addButton.insertBefore(newButton, addButton.firstElementChild);
 }
 
 function install() {
