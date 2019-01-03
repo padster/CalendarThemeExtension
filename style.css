@@ -20,11 +20,13 @@
 
 #xtnBtn {
   bottom: 96px;
+  margin-right: 12px;
 }
 
 #xtnBtnContent {
-  background-color: rgba(0,0,0,0.5);
-  display:flex;
+  display: flex;
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  color: #5f6368;
   align-items: center;
   justify-content: center;
 }
@@ -49,7 +51,15 @@
   background-color: rgba(255,255,255,0.1) !important;
 }
 
-.AOL3Kb {
+.SU7tYb.F262Ye,
+.yEkOpe.F262Ye,
+.ecKr0,
+.ef2wWc,
+.AOL3Kb,
+.ZFr60d,
+.Cd9hpd, 
+.akJTWe,
+.XnnJrc.Wyo4Qe .TKMrfe{
   background-color: rgba(255,255,255,0.3) !important;
 }
 
@@ -69,15 +79,46 @@
   color: black !important;
 }
 
+.pCoqfc, 
+.MANBAf,
+.akJTWe,
+.wy3aMe, 
+.SoBqBf,
+.OmwDud,
+.pqE3fc .wy3aMe {
+  color: white !important;
+}
+
 .Xro3Db-nUpftc.ymbhmd,
-.MDfQ7 {
+.MDfQ7, 
+.wWdzec,
+.Gk2izd {
   background-color: rgba(255,255,255,0.8) !important;
+}
+
+.Gk2izd .pCoqfc {
+  color: black !important;
 }
 
 .leOeGd {
   border-width: 8px;
   border-style: solid;
   border-image: linear-gradient(to top, rgba(255,255,255,0.3), rgba(255,255,255,0) 6%) 1;
+}
+
+/* Weird that these got disabled... */
+.SU7tYb,
+.yEkOpe:last-child {
+  border-right: #dadce0 1px solid !important;
+}
+/* ugh... ew. */
+.MVMVEe {
+  border-right-width: 0px !important;
+}
+.XnnJrc.Wyo4Qe .TKMrfe {
+  top: 0 !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
 }
 
 /* Day picker */
