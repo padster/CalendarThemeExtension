@@ -1,4 +1,22 @@
 /* Image elements */
+body {
+  --same-0p8: rgba(255,255,255, 0.8);
+  --same-0p3: rgba(255,255,255, 0.3);
+  --same-0p1: rgba(255,255,255, 0.1);
+  --oppo-0p1: rgba(  0,  0,  0, 0.1);
+  --same-0p0: rgba(255,255,255, 0.0);
+  --oppo: black;
+  --same: white;
+}
+body.xtnDarkOverlay {
+  --same-0p8: rgba(  0,  0,  0, 0.8);
+  --same-0p3: rgba(  0,  0,  0, 0.3);
+  --same-0p1: rgba(  0,  0,  0, 0.1);
+  --oppo-0p1: rgba(255,255,255, 0.1);
+  --same-0p0: rgba(  0,  0,  0, 0.0);
+  --oppo: white;
+  --same: black;
+}
 
 #xtnImgHolder, #xtnImg, #xtnImgFade {
   position: fixed;
@@ -15,7 +33,7 @@
 }
 
 #xtnImgFade {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--same-0p3);
 }
 
 #xtnBtn {
@@ -42,7 +60,7 @@
 .YvjgZe.F262Ye:after,
 .xWId8e,
 .a0xMze  {
-  background-color: rgba(255,255,255,0.1) !important;
+  background-color: var(--same-0p1) !important;
 }
 
 .SU7tYb.F262Ye,
@@ -54,7 +72,7 @@
 .Cd9hpd,
 .akJTWe,
 .XnnJrc.Wyo4Qe .TKMrfe{
-  background-color: rgba(255,255,255,0.3) !important;
+  background-color: var(--same-0p3)  !important;
 }
 
 .Xro3Db-nUpftc > div {
@@ -64,13 +82,19 @@
   background-color: white !important;
 }
 
+.NkK3Fc,
+.NkK3Fc svg,
 .rpCPrc > div,
 .MSZkRb,
 .zRt28b,
 .uQ1ixe .snByac,
 .NI2kfb,
-.nxPHec {
-  color: black !important;
+.nxPHec,
+.MSZkRb,
+.rSoRzd,
+.wWdzec,
+.snByac  {
+  color: var(--oppo) !important;
 }
 
 .pCoqfc,
@@ -80,24 +104,25 @@
 .SoBqBf,
 .OmwDud,
 .pqE3fc .wy3aMe {
-  color: white !important;
+  color: var(--same) !important;
 }
 
 .Xro3Db-nUpftc.ymbhmd,
 .MDfQ7,
 .wWdzec,
 .Gk2izd {
-  background-color: rgba(255,255,255,0.8) !important;
+  background-color: var(--same-0p8) !important;
 }
 
 .Gk2izd .pCoqfc {
-  color: black !important;
+  color: var(--oppo) !important;
 }
 
+/* Event resize grab handles. */
 .leOeGd {
   border-width: 8px;
   border-style: solid;
-  border-image: linear-gradient(to top, rgba(255,255,255,0.3), rgba(255,255,255,0) 6%) 1;
+  border-image: linear-gradient(to top, var(--same-0p3), var(--same-0p0) 6%) 1;
 }
 
 /* Weird that these got disabled... */
@@ -118,18 +143,19 @@
 /* Day picker */
 
 .HkPXyb {
-  background-color: rgba(255,255,255,0.3) !important;
+  background-color: var(--same-0p3) !important;
 }
+
 .W0m3G .r4nke {
   width: auto !important;
   background-color: transparent !important;
   border-radius: 0 !important;
 }
 .W0m3G .r4nke:hover {
-  background-color: rgba(0,0,0,0.1) !important;
+  background-color: var(--oppo-0p1) !important;
 }
 
 /* Includes the new sidebar. */
 .gboEAb {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: var(--same-0p3) !important;
 }

@@ -18,6 +18,26 @@ var DEFAULT_IMAGE_URLS = [
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/December.jpg',
 ];
 
+// OVERLAY: either lghtOverlay (default) or darkOverlay
+DEFAULT_OVERLAY_MODE = 'lghtOverlay';
+
+// Initialize overlay picker
+function loadOverlayMode(overlayMode) {
+  isDark = (overlayMode == 'darkOverlay')
+  document.getElementById('o1').checked = !isDark;
+  document.getElementById('o2').checked = isDark;
+}
+
+// Read overlay mode (gets persisted on image save)
+function getOverlayMode() {
+  if (document.getElementById('o2').checked) {
+    return 'darkOverlay';
+  } else {
+    return 'lghtOverlay';
+  }
+}
+
+
 // Encode three 8-bit numbers to 4 6-bit base64
 // Kudos to https://stackoverflow.com/questions/5845238/javascript-generate-transparent-1x1-pixel-in-dataurl-format
 function tripletEncode(e1, e2, e3) {
@@ -73,6 +93,13 @@ function updateImageUrl(url) {
     url = "https:" + url;
   }
   document.getElementById('demo').style.backgroundImage = 'url(' + url + ')';
+
+  isDark = (getOverlayMode() == 'darkOverlay')
+  sideColor = "rgba(255,255,255,0.3)"
+  if (isDark) {
+    sideColor = "rgba(0,0,0,0.3)";
+  }
+  document.getElementById('sidebar').style.backgroundColor = sideColor;
 }
 
 /** Change which tab of options are visible. */
@@ -116,8 +143,11 @@ function loadColorOption(imageURL, parsedColorHex) {
 /** Initialize URL from chrome sync options. */
 function loadOptions() {
   chrome.storage.sync.get({
-    imageURL: DEFAULT_IMAGE_URLS
+    imageURL: DEFAULT_IMAGE_URLS,
+    overlayMode: DEFAULT_OVERLAY_MODE,
   }, function(items) {
+    loadOverlayMode(items.overlayMode);
+
     if (!Array.isArray(items.imageURL)) {
       parsedColorHex = urlToMaybeColorHex(items.imageURL);
       if (parsedColorHex) {
@@ -140,6 +170,7 @@ function saveSingleOption() {
   }
   chrome.storage.sync.set({
     imageURL: imageURL,
+    overlayMode: getOverlayMode(),
   }, function() {
     updateImageUrl(imageURL);
     // Update status to let user know options were saved.
@@ -168,6 +199,7 @@ function saveMonthOptions() {
   }
   chrome.storage.sync.set({
     imageURL: imageURL,
+    overlayMode: getOverlayMode(),
   }, function() {
     var currentMonth = new Date().getMonth();
     updateImageUrl(imageURL[currentMonth % imageURL.length]);
@@ -187,6 +219,7 @@ function saveColorOptions() {
 
   chrome.storage.sync.set({
     imageURL: imageURL,
+    overlayMode: getOverlayMode(),
   }, function() {
     updateImageUrl(imageURL);
     // Update status to let user know options were saved.

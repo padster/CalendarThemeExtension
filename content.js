@@ -17,11 +17,15 @@ var DEFAULT_IMAGE_URLS = [
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/December.jpg',
 ];
 
+var DEFAULT_OVERLAY_MODE = 'lghtOverlay';
+
 function setImageStyle() {
   var currentMonth = new Date().getMonth();
   chrome.storage.sync.get({
-    imageURL: DEFAULT_IMAGE_URLS
+    imageURL: DEFAULT_IMAGE_URLS,
+    overlayMode: DEFAULT_OVERLAY_MODE,
   }, function(items) {
+    // Image:
     var imageArray = items.imageURL;
     if (!Array.isArray(imageArray)) {
       imageArray = [imageArray];
@@ -29,6 +33,13 @@ function setImageStyle() {
     var currentMonth = new Date().getMonth();
     var currentImage = imageArray[currentMonth % imageArray.length];
     document.getElementById('xtnImg').style.backgroundImage = "url('" +  currentImage + "')";
+
+    // Overlay:
+    if (items.overlayMode == 'darkOverlay') {
+      document.body.classList.add('xtnDarkOverlay');
+    } else {
+      document.body.classList.remove('xtnDarkOverlay');
+    }
   });
 }
 

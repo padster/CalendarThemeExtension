@@ -33,6 +33,7 @@
       cursor: pointer;
     }
     #demo {
+      display: flex;
       width: 60%;
       height: 60%;
       margin: 0 auto;
@@ -41,6 +42,11 @@
       background-attachment: fixed;
       background-position: center;
       background-size: cover;
+    }
+    #sidebar {
+      display: flex;
+      height: 100%;
+      width: 20%;
     }
     #status {
       position: absolute;
@@ -54,11 +60,14 @@
     .options {
       padding-bottom: 1.5em;
     }
-    label {
+    .optionTitle, label {
       font-size: 16px;
       height: 24px;
       padding: 8px 16px;
       cursor: pointer;
+    }
+    .optionTitle {
+      font-style: italic;
     }
     input[type="color"] {
       flex-grow: 0;
@@ -71,6 +80,12 @@
   <h1>Custom Calendar Background options</h1>
   <div>
     <div class="options">
+      <span class="optionTitle">Overlay:</span>
+      <label><input id="o1" type="radio" name="overlay">Light overlay</label>
+      <label><input id="o2" type="radio" name="overlay">Dark overlay</label>
+    </div>
+    <div class="options">
+      <span class="optionTitle">Background:</span>
       <label><input id="t1" type="radio" name="type">Single Image</label>
       <label><input id="t2" type="radio" name="type">Monthly Images</label>
       <label><input id="t3" type="radio" name="type">Color</label>
@@ -145,7 +160,9 @@
     <button id="reset">Reset (without save)</button>
     <div id="status"></div>
   </div>
-  <div id="demo"></div>
+  <div id="demo">
+    <div id="sidebar"></div>
+  </div>
 
   <script src='options.js'></script>
 </body>
