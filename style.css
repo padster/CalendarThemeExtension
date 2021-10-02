@@ -19,21 +19,15 @@
 }
 
 #xtnBtn {
-  bottom: 96px;
-  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  margin-right: 4px;
+}
+#xtnBtn:hover {
+  background: rgba(0,0,0,0.03);
+  border-radius: 20px;
 }
 
-#xtnBtnContent {
-  display: flex;
-  /* background-color: rgba(255, 255, 255, 0.3); */
-  color: #5f6368;
-  align-items: center;
-  justify-content: center;
-}
-
-#xtnBtnContent:before {
-  content: 'image';
-}
 
 /* Existing color modifications */
 
@@ -57,7 +51,7 @@
 .ef2wWc,
 .AOL3Kb,
 .ZFr60d,
-.Cd9hpd, 
+.Cd9hpd,
 .akJTWe,
 .XnnJrc.Wyo4Qe .TKMrfe{
   background-color: rgba(255,255,255,0.3) !important;
@@ -79,10 +73,10 @@
   color: black !important;
 }
 
-.pCoqfc, 
+.pCoqfc,
 .MANBAf,
 .akJTWe,
-.wy3aMe, 
+.wy3aMe,
 .SoBqBf,
 .OmwDud,
 .pqE3fc .wy3aMe {
@@ -90,7 +84,7 @@
 }
 
 .Xro3Db-nUpftc.ymbhmd,
-.MDfQ7, 
+.MDfQ7,
 .wWdzec,
 .Gk2izd {
   background-color: rgba(255,255,255,0.8) !important;

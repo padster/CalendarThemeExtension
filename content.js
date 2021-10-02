@@ -58,10 +58,17 @@ function createSettingsButtonDOM() {
   button.id = 'xtnBtn';
   button.className = TOP_BUTTONS_CLASS;
   button.title = 'Background';
-  var buttonContent = document.createElement('div');
-  buttonContent.id = 'xtnBtnContent'
-  buttonContent.className = 'Gw6Zhc';
-  button.appendChild(buttonContent);
+
+  button.innerHTML = `
+    <span class="xjKiLb">
+      <span class="Ce1Y1c" style="top: -12px; padding-left: 8px;">
+        <svg width="24" height="24" viewBox="0 0 18 18" focusable="false" class=" NMm5M hhikbc">
+          <path d="M14.5 3.5v11h-11v-11h11zM14.4444 2H3.55556C2.7 2 2 2.7 2 3.55556V14.4444C2 15.3 2.7 16 3.55556 16H14.4444C15.3 16 16 15.3 16 14.4444V3.55556C16 2.7 15.3 2 14.4444 2zM10.5 9l-2 2.9985L7 10l-2 3h8l-2.5-4z" fill="#5f6368"/>
+        </svg>
+      </span>
+    </span>
+  `;
+
   button.href = 'chrome-extension://' + chrome.runtime.id + '/options.html';
   button.target = '_blank';
   return button;
