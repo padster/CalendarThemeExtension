@@ -1,3 +1,8 @@
+var BASE64_KEY = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+var COLOR_PIXEL_PREFIX = "data:image/gif;base64,R0lGODlhAQABAPAA"
+var COLOR_PIXEL_SUFFIX = "/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
+var DEFAULT_COLOR_HEX = "#ffffff"
+
 var DEFAULT_IMAGE_URLS = [
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/January.jpg',
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/February.jpg',
@@ -13,6 +18,55 @@ var DEFAULT_IMAGE_URLS = [
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/December.jpg',
 ];
 
+// Encode three 8-bit numbers to 4 6-bit base64
+// Kudos to https://stackoverflow.com/questions/5845238/javascript-generate-transparent-1x1-pixel-in-dataurl-format
+function tripletEncode(e1, e2, e3) {
+  enc1 = e1 >> 2;
+  enc2 = ((e1 & 3) << 4) | (e2 >> 4);
+  enc3 = ((e2 & 15) << 2) | (e3 >> 6);
+  enc4 = e3 & 63;
+  return BASE64_KEY.charAt(enc1) + BASE64_KEY.charAt(enc2) + BASE64_KEY.charAt(enc3) + BASE64_KEY.charAt(enc4);
+}
+
+// Decode 4 6-bit base64 to three 8-bit numbers (reverse the above)
+function tripletDecode(aaaa) {
+  enc1 = BASE64_KEY.indexOf(aaaa[0])
+  enc2 = BASE64_KEY.indexOf(aaaa[1])
+  enc3 = BASE64_KEY.indexOf(aaaa[2])
+  enc4 = BASE64_KEY.indexOf(aaaa[3])
+  e3 = ((enc3 & 3) << 6) | enc4
+  e2 = ((enc2 & 15) << 4) | (enc3 >> 2)
+  e1 = (enc1 << 2) | (enc2 >> 4)
+  return [e1, e2, e3]
+}
+
+// Reverse colorHexToUrl back into a hex color.
+// If it's not from colorHexToUrl, return null.
+function urlToMaybeColorHex(url) {
+  if (!url.startsWith(COLOR_PIXEL_PREFIX) || !url.endsWith(COLOR_PIXEL_SUFFIX)) {
+    return null;
+  }
+
+  encoded = url.substring(COLOR_PIXEL_PREFIX.length, url.length - COLOR_PIXEL_SUFFIX.length)
+  _rg = tripletDecode(encoded.substring(0, 4))
+  b__ = tripletDecode(encoded.substring(4, 8))
+  r = _rg[1]
+  g = _rg[2]
+  b = b__[0]
+  // Kudos to https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+// Convert a hex color (#aabbcc) to a data URL for a 1x1 pixel of that color
+function colorHexToUrl(hexColor) {
+  var s = hexColor.substring(1, 7);
+  r = parseInt(s[0] + s[1], 16)
+  g = parseInt(s[2] + s[3], 16)
+  b = parseInt(s[4] + s[5], 16)
+  encoded = tripletEncode(0, r, g) + tripletEncode(b, 255, 255);
+  return COLOR_PIXEL_PREFIX + encoded + COLOR_PIXEL_SUFFIX;
+}
+
 /** When the image changes, update both the picker and the demo image. */
 function updateImageUrl(url) {
   if (url.indexOf("//") == 0) {
@@ -23,12 +77,15 @@ function updateImageUrl(url) {
 
 /** Change which tab of options are visible. */
 function setTab(tab) {
-  isT1 = (tab == 't1');
   document.getElementById('demo').style.backgroundImage = 'none';
-  document.getElementById('t1').checked = isT1;
-  document.getElementById('t2').checked = !isT1;
-  document.getElementById('t1Fields').style.display = (isT1 ? "block" : "none");
-  document.getElementById('t2Fields').style.display = (isT1 ? "none" : "block");
+
+  document.getElementById('t1').checked = (tab == 't1');
+  document.getElementById('t2').checked = (tab == 't2');
+  document.getElementById('t3').checked = (tab == 't3');
+
+  document.getElementById('t1Fields').style.display = ((tab == 't1') ? "block" : "none");
+  document.getElementById('t2Fields').style.display = ((tab == 't2') ? "block" : "none");
+  document.getElementById('t3Fields').style.display = ((tab == 't3') ? "block" : "none");
 }
 
 /** Show single tab, and update the one URL to use. */
@@ -49,13 +106,25 @@ function loadMonthOptions(imageURL) {
   updateImageUrl(imageURL[currentMonth % imageURL.length]);
 }
 
+/** Show tab for single colour picker and load colour based on base64 pixel. */
+function loadColorOption(imageURL, parsedColorHex) {
+  setTab('t3');
+  document.getElementById('color').value = parsedColorHex;
+  updateImageUrl(imageURL);
+}
+
 /** Initialize URL from chrome sync options. */
 function loadOptions() {
   chrome.storage.sync.get({
     imageURL: DEFAULT_IMAGE_URLS
   }, function(items) {
     if (!Array.isArray(items.imageURL)) {
-      loadSingleOption(items.imageURL);
+      parsedColorHex = urlToMaybeColorHex(items.imageURL);
+      if (parsedColorHex) {
+        loadColorOption(items.imageURL, parsedColorHex);
+      } else {
+        loadSingleOption(items.imageURL);
+      }
     } else {
       loadMonthOptions(items.imageURL);
     }
@@ -111,12 +180,32 @@ function saveMonthOptions() {
   });
 }
 
+/** Save colour by generating data URL to single pixel of that color. */
+function saveColorOptions() {
+  var colorHex = document.getElementById('color').value;
+  var imageURL = colorHexToUrl(colorHex)
+
+  chrome.storage.sync.set({
+    imageURL: imageURL,
+  }, function() {
+    updateImageUrl(imageURL);
+    // Update status to let user know options were saved.
+    var status = document.getElementById('status');
+    status.textContent = 'Options saved.';
+    setTimeout(function() {
+      status.textContent = '';
+    }, 1000);
+  });
+}
+
 /** Persist extension options to chrome sync. */
 function saveOptions() {
   if (!!document.getElementById('t1').checked) {
     saveSingleOption();
-  } else {
+  } else if (!!document.getElementById('t2').checked) {
     saveMonthOptions();
+  } else if (!!document.getElementById('t3').checked) {
+    saveColorOptions();
   }
 }
 
@@ -132,12 +221,19 @@ function resetMonthOptions() {
   }
 }
 
+/** Change single color back to the default color. */
+function resetColorOption() {
+  document.getElementById('color').value = DEFAULT_COLOR_HEX;
+}
+
 /** Reset current URLs to their defaults. */
 function resetOptions() {
   if (!!document.getElementById('t1').checked) {
     resetSingleOption();
-  } else {
+  } else if (!!document.getElementById('t2').checked) {
     resetMonthOptions();
+  } else if (!!document.getElementById('t3').checked) {
+    resetColorOption();
   }
 }
 
@@ -151,3 +247,4 @@ document.getElementById('save').addEventListener('click', saveOptions);
 document.getElementById('reset').addEventListener('click', resetOptions);
 document.getElementById('t1').addEventListener('change', changeTab);
 document.getElementById('t2').addEventListener('change', changeTab);
+document.getElementById('t3').addEventListener('change', changeTab);

@@ -50,7 +50,11 @@ function installImage() {
   var imageDOM = createImageDOM();
   banner.parentElement.insertBefore(imageDOM, banner);
   setImageStyle();
-  window.addEventListener('focus', function(e) { setImageStyle(); });
+  document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState === 'visible') {
+      setImageStyle();
+    }
+  });
 }
 
 function createSettingsButtonDOM() {

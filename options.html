@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Google Wall Calendar options</title>
+  <title>Custom Calendar Background options</title>
   <style>
     html, head, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+    h1 {
+      padding: 0 20px;
+    }
     .field {
       display: flex;
       align-items: center;
@@ -57,15 +60,20 @@
       padding: 8px 16px;
       cursor: pointer;
     }
+    input[type="color"] {
+      flex-grow: 0;
+      width: calc(2.4em + 20px);
+    }
   </style>
 </head>
 <body>
 
-  <h1>Google Wall Calendar options</h1>
+  <h1>Custom Calendar Background options</h1>
   <div>
     <div class="options">
       <label><input id="t1" type="radio" name="type">Single Image</label>
       <label><input id="t2" type="radio" name="type">Monthly Images</label>
+      <label><input id="t3" type="radio" name="type">Color</label>
     </div>
     <div id="t1Fields">
       <div class="field">
@@ -123,6 +131,14 @@
       <div class="field">
         <div class="title">December:</div>
         <div class="input"><input id="urlMonth11" type="url"/></div>
+      </div>
+    </div>
+    <div id="t3Fields">
+      <div class="field">
+        <div class="title">Color:</div>
+        <div class="input">
+          <input id="color" type="color"/>
+        </div>
       </div>
     </div>
     <button id="save">Save</button>
