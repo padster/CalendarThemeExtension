@@ -4,6 +4,7 @@ body {
   --same-0p3: rgba(255,255,255, 0.3);
   --same-0p1: rgba(255,255,255, 0.1);
   --oppo-0p1: rgba(  0,  0,  0, 0.1);
+  --oppo-0p3: rgba(  0,  0,  0, 0.3);
   --same-0p0: rgba(255,255,255, 0.0);
   --oppo: black;
   --same: white;
@@ -13,6 +14,7 @@ body.xtnDarkOverlay {
   --same-0p3: rgba(  0,  0,  0, 0.3);
   --same-0p1: rgba(  0,  0,  0, 0.1);
   --oppo-0p1: rgba(255,255,255, 0.1);
+  --oppo-0p3: rgba(255,255,255, 0.3);
   --same-0p0: rgba(  0,  0,  0, 0.0);
   --oppo: white;
   --same: black;
@@ -40,14 +42,47 @@ body.xtnDarkOverlay {
   width: 40px;
   height: 40px;
   margin-right: 4px;
+  border-radius: 20px;
+  background-color: var(--oppo-0p1) !important;
+  border: 1px solid var(--oppo-0p3) !important;
 }
+
 #xtnBtn:hover {
   background: rgba(0,0,0,0.03);
-  border-radius: 20px;
+  background-color: #f1f3f4 !important;
 }
 
 
 /* Existing color modifications */
+
+
+/* grid borders: */
+.YvjgZe {
+  border-right-color: var(--oppo-0p1) !important;
+}
+.mmsF1c::after {
+  border-bottom-color: var(--oppo-0p1) !important;
+}
+/* Weird that these got disabled... */
+.SU7tYb,
+.yEkOpe:last-child {
+  border-right: var(--oppo-0p1) 1px solid !important;
+}
+/* ugh... ew. */
+.MVMVEe {
+  border-left-color: var(--oppo-0p1) !important;
+  border-right-width: 0px !important;
+}
+.yEkOpe, .CIFHgc {
+  border-right-color: var(--oppo-0p1) !important;
+}
+.XnnJrc.Wyo4Qe .TKMrfe {
+  top: 0 !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+/* Other: */
 
 #gb,
 #gb > div,
@@ -63,6 +98,7 @@ body.xtnDarkOverlay {
   background-color: var(--same-0p1) !important;
 }
 
+
 .SU7tYb.F262Ye,
 .yEkOpe.F262Ye,
 .ecKr0,
@@ -71,7 +107,8 @@ body.xtnDarkOverlay {
 .ZFr60d,
 .Cd9hpd,
 .akJTWe,
-.XnnJrc.Wyo4Qe .TKMrfe{
+.Zlotdb,
+.XnnJrc.Wyo4Qe .TKMrfe {
   background-color: var(--same-0p3)  !important;
 }
 
@@ -88,23 +125,49 @@ body.xtnDarkOverlay {
 .MSZkRb,
 .zRt28b,
 .uQ1ixe .snByac,
-.NI2kfb,
+.Kyuwuc .snByac,
 .nxPHec,
 .MSZkRb,
+.MSZkRb .r4nke,
 .rSoRzd,
 .wWdzec,
-.snByac  {
+.XXcuqd,
+.MANBAf,
+.GENA3c,
+.Vrr33d,
+.kMp0We,
+.hGcgEd,
+.DN1TJ  {
   color: var(--oppo) !important;
 }
 
+.Erb9le .U26fgb,
+.UQuaGc .snByac,
+.rFrNMe .snByac,
+.ettIx,
+.ettIx .snByac,
+.U26fgb.I12f0b .snByac {
+  color: #5f6368 !important;
+}
+
+.NI2kfb {
+  color: inherit !important;
+}
+
 .pCoqfc,
-.MANBAf,
 .akJTWe,
 .wy3aMe,
 .SoBqBf,
 .OmwDud,
-.pqE3fc .wy3aMe {
+.snByac,
+.pqE3fc .wy3aMe,
+.jefcFd .kMp0We {
   color: var(--same) !important;
+}
+
+.jefcFd .kMp0We,
+.pdqVLc .DN1TJ {
+  color: black !important;
 }
 
 .Xro3Db-nUpftc.ymbhmd,
@@ -125,21 +188,6 @@ body.xtnDarkOverlay {
   border-image: linear-gradient(to top, var(--same-0p3), var(--same-0p0) 6%) 1;
 }
 
-/* Weird that these got disabled... */
-.SU7tYb,
-.yEkOpe:last-child {
-  border-right: #dadce0 1px solid !important;
-}
-/* ugh... ew. */
-.MVMVEe {
-  border-right-width: 0px !important;
-}
-.XnnJrc.Wyo4Qe .TKMrfe {
-  top: 0 !important;
-  border-top-left-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-}
-
 /* Day picker */
 
 .HkPXyb {
@@ -151,11 +199,30 @@ body.xtnDarkOverlay {
   background-color: transparent !important;
   border-radius: 0 !important;
 }
-.W0m3G .r4nke:hover {
+.W0m3G .r4nke:hover,
+.lR3h6d .CIy9F {
   background-color: var(--oppo-0p1) !important;
 }
 
 /* Includes the new sidebar. */
 .gboEAb {
   background-color: var(--same-0p3) !important;
+}
+
+/* Buttons */
+.HLI7qf {
+  background-color: transparent !important;
+}
+.U26fgb {
+  background-color: var(--oppo-0p1) !important;
+  border: 1px solid var(--oppo-0p3) !important;
+}
+.U26fgb:hover {
+  background-color: #f1f3f4 !important;
+}
+.U26fgb, .U26fgb .snByac {
+  color: var(--oppo) !important
+}
+.U26fgb:hover, .U26fgb:hover .snByac {
+  color: var(--same) !important;
 }
