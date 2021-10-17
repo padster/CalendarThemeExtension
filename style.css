@@ -21,9 +21,11 @@ body.xtnDarkOverlay {
 }
 
 #xtnImgHolder, #xtnImg, #xtnImgFade {
-  position: fixed;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 #xtnImg {
@@ -225,4 +227,9 @@ body.xtnDarkOverlay {
 }
 .U26fgb:hover, .U26fgb:hover .snByac {
   color: var(--same) !important;
+}
+
+/* Fix up clockwise: */
+.QQYuzf {
+  background-color: inherit !important;
 }
