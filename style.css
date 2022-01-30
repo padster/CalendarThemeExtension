@@ -1,21 +1,25 @@
 /* Image elements */
 body {
-  --same-0p8: rgba(255,255,255, 0.8);
-  --same-0p3: rgba(255,255,255, 0.3);
+  --same-0p0: rgba(255,255,255, 0.0);
   --same-0p1: rgba(255,255,255, 0.1);
+  --same-0p3: rgba(255,255,255, 0.3);
+  --same-0p8: rgba(255,255,255, 0.8);
+  --oppo-0p0: rgba(  0,  0,  0, 0.0);
   --oppo-0p1: rgba(  0,  0,  0, 0.1);
   --oppo-0p3: rgba(  0,  0,  0, 0.3);
-  --same-0p0: rgba(255,255,255, 0.0);
+  --oppo-0p8: rgba(  0,  0,  0, 0.8);
   --oppo: black;
   --same: white;
 }
 body.xtnDarkOverlay {
-  --same-0p8: rgba(  0,  0,  0, 0.8);
-  --same-0p3: rgba(  0,  0,  0, 0.3);
+  --same-0p0: rgba(  0,  0,  0, 0.0);
   --same-0p1: rgba(  0,  0,  0, 0.1);
+  --same-0p3: rgba(  0,  0,  0, 0.3);
+  --same-0p8: rgba(  0,  0,  0, 0.8);
+  --oppo-0p0: rgba(255,255,255, 0.0);
   --oppo-0p1: rgba(255,255,255, 0.1);
   --oppo-0p3: rgba(255,255,255, 0.3);
-  --same-0p0: rgba(  0,  0,  0, 0.0);
+  --oppo-0p8: rgba(255,255,255, 0.8);
   --oppo: white;
   --same: black;
 }
@@ -137,7 +141,6 @@ body.xtnDarkOverlay {
 .MANBAf,
 .GENA3c,
 .Vrr33d,
-.kMp0We,
 .hGcgEd,
 .DN1TJ  {
   color: var(--oppo) !important;
@@ -148,11 +151,20 @@ body.xtnDarkOverlay {
 .rFrNMe .snByac,
 .ettIx,
 .ettIx .snByac,
-.U26fgb.I12f0b .snByac {
+.U26fgb.I12f0b .snByac,
+.BoZa0b {
   color: #5f6368 !important;
 }
 
 .NI2kfb {
+  color: inherit !important;
+}
+.BoZa0b .kMp0We,
+.jefcFd .kMp0We,
+.FzsTU .kMp0We,
+.BoZa0b .DN1TJ,
+.pdqVLc .DN1TJ,
+.FzsTU .DN1TJ {
   color: inherit !important;
 }
 
@@ -162,22 +174,16 @@ body.xtnDarkOverlay {
 .SoBqBf,
 .OmwDud,
 .snByac,
-.pqE3fc .wy3aMe,
-.jefcFd .kMp0We {
+.pqE3fc .wy3aMe {
   color: var(--same) !important;
 }
 
-.jefcFd .kMp0We,
-.pdqVLc .DN1TJ {
-  color: black !important;
-}
-
 .Xro3Db-nUpftc.ymbhmd,
-.MDfQ7,
 .wWdzec,
 .Gk2izd {
   background-color: var(--same-0p8) !important;
 }
+
 
 .Gk2izd .pCoqfc {
   color: var(--oppo) !important;
@@ -219,6 +225,7 @@ body.xtnDarkOverlay {
   background-color: var(--oppo-0p1) !important;
   border: 1px solid var(--oppo-0p3) !important;
 }
+.jefcFd .U26fgb,
 .U26fgb:hover {
   background-color: #f1f3f4 !important;
 }
@@ -229,7 +236,34 @@ body.xtnDarkOverlay {
   color: var(--same) !important;
 }
 
+/* Month chips: */
+.g3dbUc.smECzc {
+  color: var(--oppo-0p8) !important;
+}
+.g3dbUc.smECzc:hover {
+  color: rgba(  0,  0,  0, 0.8) !important;
+}
+
+/* Agenda view: */
+.dtaVuc {
+  color: var(--oppo-0p8) !important;
+}
+
 /* Fix up clockwise: */
 .QQYuzf {
   background-color: inherit !important;
+}
+
+/* Settings: */
+.mfcZZc {
+  color: var(--oppo) !important;
+}
+.MDfQ7 {
+  background-color: var(--oppo-0p3) !important;
+}
+.MDfQ7 .O1gyfd {
+  color: var(--same-0p8) !important;
+}
+.MDfQ7 .oj6B2e {
+  color: var(--oppo) !important;
 }
