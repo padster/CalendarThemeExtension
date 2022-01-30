@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Custom Calendar Background",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Adds background images to Google Calendar",
 
   "icons": { "128": "icon128.png" },
