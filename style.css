@@ -17,14 +17,14 @@ body {
   --regular-text: var(--oppo-0p5);
   --popup-text: #3c4043;
 
-  --button-fg: rgba(255,255,255, 0.8);
+  --button-fg: var(--oppo-0p8);
   --button-bg: var(--oppo-0p1);
 
   --minical-background: var(--same-0p1);
   --minical-hover: var(--oppo-0p1);
 
-  --settings-header-text: rgba(255,255,255, 0.8);
-  --settings-regular-text: rgba(255,255,255, 0.5);
+  --settings-header-text: var(--oppo-0p8);
+  --settings-regular-text: var(--oppo-0p5);
 }
 body.xtnDarkOverlay {
   --same-0p0: rgba(  0,  0,  0, 0.0);
@@ -39,6 +39,7 @@ body.xtnDarkOverlay {
   --oppo-0p8: rgba(255,255,255, 0.8);
   --oppo: white;
   --same: black;
+
 }
 
 #xtnImgHolder, #xtnImg, #xtnImgFade {
@@ -74,13 +75,19 @@ body.xtnDarkOverlay {
 /* Titles! */
 .gb_Vc .gb_Xd,
 .gb_Tc.gb_Uc,
+.gb_0c .gb_2d,
 .NkK3Fc span[role=heading] {
   color: var(--oppo-0p8) !important;
 }
 
-.gb_na svg, .gb_zc svg, .gb_Vc .gb_Xd, .gb_Lc .gb_Xd {
+.gb_na svg,
+.gb_zc svg,
+.gb_Vc .gb_Xd,
+.gb_Lc .gb_Xd,
+#gb#gb a.gb_A {
   color: inherit !important;
 }
+
 
 
 /* grid borders: */
@@ -175,6 +182,7 @@ body.xtnDarkOverlay {
 .RDlrG,
 .I7OXgf,
 .gHQcAb,
+.XvhY1d,
 .jefcFd {
   color: var(--popup-text) !important;
   --heading-text: var(--popup-text);
@@ -183,6 +191,20 @@ body.xtnDarkOverlay {
   --regular-text: rgba(  0,  0,  0, 0.8);
   --minical-hover: rgba(  0,  0,  0, 0.1);
 }
+
+.BoZa0b .kMp0We,
+.RDlrG .kMp0We,
+.I7OXgf .kMp0We,
+.gHQcAb .kMp0We,
+.XvhY1d .kMp0We,
+.jefcFd .kMp0We,
+.XvhY1d .kMp0We {
+  color: var(--popup-text) !important;
+}
+.PnGFPb .kMp0We {
+  color: #222 !important;
+}
+
 
 
 .DN1TJ {
@@ -223,9 +245,8 @@ body.xtnDarkOverlay {
 
 /* Event resize grab handles. */
 .leOeGd {
-  border-width: 8px;
-  border-style: solid;
-  border-image: linear-gradient(to top, var(--same-0p3), var(--same-0p0) 6%) 1;
+  background-size: 100%;
+  background-image: linear-gradient(to top, var(--same-0p3), var(--same-0p0));
 }
 
 /* Day picker */
@@ -319,7 +340,7 @@ body.xtnDarkOverlay {
 
 /* Settings: */
 .MDfQ7 {
-  background-color: var(--same-0p1) !important;
+  background-color: var(--same-0p3) !important;
   color: var(--settings-regular-text) !important;
   padding-bottom: 8px !important; /* ew */
 }
@@ -362,6 +383,20 @@ body.xtnDarkOverlay {
   color: var(--popup-text) !important;
   --heading-text: var(--popup-text);
 }
+
+/* Event popup */
+
+/* title */
+.PSmyRb.CCDcoc .zHQkBf {
+  color: var(--heading-text) !important;
+}
+
+/* Side buttons */
+.tzcF6 {
+  --button-fg: var(--oppo-0p5);
+  --button-bg: var(--same-0p5);
+}
+
 
 
 /* Buttons */
@@ -415,6 +450,7 @@ div[role="toolbar"] .PqAscf {
   color: var(--oppo-0p8) !important;
 }
 
+/* TODO: BURN THIS OVERRIDE */
 .kMp0We {
   color: var(--oppo-0p8) !important;
 }
