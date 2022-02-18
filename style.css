@@ -368,6 +368,14 @@ body.xtnDarkOverlay {
   /* Why are these all set manually? :( */
   color: inherit !important;
 }
+.MDfQ7 .Kb2sf,
+.MDfQ7 .Qfwgwb {
+  color: #222 !important;
+}
+.MDfQ7 .Kb2sf.n48mwe {
+  color: var(--settings-header-text) !important; /* uneditable. */
+}
+
 
 /* Settings side tabs */
 .cAYGed.KKjvXb .Ioup7e, .cAYGed.KKjvXb .BMQm1d {
