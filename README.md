@@ -8,7 +8,11 @@ The extension includes a few features:
 * Select between a light and dark overlap to improve text visibility.
 
 ## Recent changes!
-**v1.0.6** (most recent!)
+**v1.0.9**
+* Hopefully fix bad encoding on options page, no longer will show random characters.
+* A few more style fixes across light/dark modes.
+
+**v1.0.6**
 * Numerous style fixes across light and dark modes across the app.
 * Settings page links to this page for information.
 
