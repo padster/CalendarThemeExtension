@@ -16,6 +16,8 @@ body {
   --heading-text: var(--oppo-0p8);
   --regular-text: var(--oppo-0p5);
   --popup-text: #3c4043;
+  --month-chip-text: var(--oppo-0p8);
+  --month-chip-hover-text: rgba(  0,  0,  0, 0.8);
 
   --button-fg: var(--oppo-0p8);
   --button-bg: var(--oppo-0p1);
@@ -190,6 +192,9 @@ body.xtnDarkOverlay {
   --button-bg: transparent;
   --regular-text: rgba(  0,  0,  0, 0.8);
   --minical-hover: rgba(  0,  0,  0, 0.1);
+
+  --month-chip-text: rgba(  0,  0,  0, 0.8);
+  --month-chip-hover-text: rgba(  0,  0,  0, 0.8);
 }
 
 .BoZa0b .kMp0We,
@@ -325,10 +330,10 @@ body.xtnDarkOverlay {
 
 /* Month chips: */
 .g3dbUc.smECzc {
-  color: var(--oppo-0p8) !important;
+  color: var(--month-chip-text) !important;
 }
 .g3dbUc.smECzc:hover {
-  color: rgba(  0,  0,  0, 0.8) !important;
+  color: var(--month-chip-hover-text) !important;
 }
 
 /* Agenda view: */
@@ -525,4 +530,13 @@ div[role="toolbar"] .PqAscf {
 }
 .NekIXe .fKz7Od {
   --button-fg: rgba(0,0,0,0.8) !important;
+}
+
+/* Find a time toolbar */
+div[role="toolbar"].Xo3rO {
+  color: var(--heading-text) !important;
+}
+div[role="toolbar"].Xo3rO .U26fgb {
+  --button-fg: var(--oppo-0p8) !important;
+  --button-bg: var(--oppo-0p1) !important;
 }
