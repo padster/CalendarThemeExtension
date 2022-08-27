@@ -19,18 +19,29 @@ var DEFAULT_IMAGE_URLS = [
 
 var DEFAULT_OVERLAY_MODE = 'lghtOverlay';
 
-function setImageStyle() {
-  var currentMonth = new Date().getMonth();
+var DEFAULT_MONTH_MODE = 'fixed';
+
+var monthToDisplay = undefined;
+
+function showMonth(visualMonth) {
   chrome.storage.sync.get({
     imageURL: DEFAULT_IMAGE_URLS,
     overlayMode: DEFAULT_OVERLAY_MODE,
+    monthMode: DEAFULT_MONTH_MODE,
   }, function(items) {
     // Image:
     var imageArray = items.imageURL;
     if (!Array.isArray(imageArray)) {
       imageArray = [imageArray];
     }
-    var currentMonth = new Date().getMonth();
+
+    var monthToShow = new Date().getMonth();
+    if (items.monthMode == 'visual' && visualMonth) {
+      monthToShow = visualMonth;
+    }
+
+
+
     var currentImage = imageArray[currentMonth % imageArray.length];
     document.getElementById('xtnImg').style.backgroundImage = "url('" +  currentImage + "')";
 
@@ -41,6 +52,10 @@ function setImageStyle() {
       document.body.classList.remove('xtnDarkOverlay');
     }
   });
+}
+
+function setImageStyle() {
+  showMonth(new Date().getMonth());
 }
 
 function createImageDOM() {
@@ -95,9 +110,46 @@ function installSettingsButton() {
   addButton.insertBefore(newButton, addButton.firstElementChild);
 }
 
+function handleNewUrl(location) {
+  matched = location.match(/\/(\d{4})\/(\d{1,2})\/(\d{1,2})$/)
+  if (!matched) {
+    return
+  }
+  month = parseInt(matched[2])
+  console.log("Month: ", month)
+}
+
+// Hacky - there really should be a callback listener for this.
+// From here: https://stackoverflow.com/questions/3522090/event-when-window-location-href-changes
+function installURLCallback() {
+  window.addEventListener("load", function() {
+      let oldHref = document.location.href,
+          bodyDOM = document.querySelector("body");
+      const observer = new MutationObserver(function(mutations) {
+          if (oldHref != document.location.href) {
+              oldHref = document.location.href;
+              handleNewUrl(document.location.href);
+              window.requestAnimationFrame(function() {
+                  let tmp = document.querySelector("body");
+                  if(tmp != bodyDOM) {
+                      bodyDOM = tmp;
+                      observer.observe(bodyDOM, config);
+                  }
+              })
+          }
+      });
+      const config = {
+          childList: true,
+          subtree: true
+      };
+      observer.observe(bodyDOM, config);
+  }, true);
+}
+
 function install() {
   installImage();
   installSettingsButton();
+  installURLCallback();
 }
 
 install();
