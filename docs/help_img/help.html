@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Custom Calendar Background help page</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  max-width: 800px;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+pre {
+  display: inline;
+  background-color: whitesmoke;
+}
+
+img {
+  display: block;
+  max-height: 400px;
+  max-width: 760px;
+  padding: 16px 0;
+}
+
+pre {
+  font-weight: bold;
+}
+
+em {
+  display: block;
+  font-size: larger;
+}
+
+.sources {
+  display: flex;
+}
+
+.source_opt {
+  cursor: pointer;
+  border: 1px solid lightgrey;
+  margin-left: -1px;
+  min-width: 120px;
+  text-align: center;
+  line-height: 2.5em;
+  padding: 0 12px;
+}
+
+.source_opt:hover {
+  background-color: whitesmoke;
+}
+
+.photo_source {
+  display: none;
+  border: 1px solid lightgrey;
+  padding: 0 20px;
+  margin: -1px 0 0 -1px;
+}
+
+.photo_source br {
+  padding-bottom: 16px;
+}
+
+.source_pad {
+  padding-bottom: 16px;
+}
+</style>
+
+<script>
+function show_help(src) {
+    // document.getElementById('t1').checked = (tab == 't1');
+    // document.getElementById('t2').checked = (tab == 't2');
+    // document.getElementById('t3').checked = (tab == 't3');
+
+    document.getElementById('source_goog').style.display = ((src == 'goog') ? "block" : "none");
+    document.getElementById('source_fb').style.display = ((src == 'fb') ? "block" : "none");
+    document.getElementById('source_gimg').style.display = ((src == 'gimg') ? "block" : "none");
+    document.getElementById('source_other').style.display = ((src == 'other') ? "block" : "none");
+}
+</script>
+</head>
+<body>
+  <h1>Calendar Chrome Extension support</h1>
+  <h2>How do I get the right URL for my image?</h2>
+  <p>When viewing an image online, often the URL of the page is not that of the image, but one that lets you view it as well as share/edit/... it.
+    Instead, this extension requires the URL of just the image; for instructions on how to find that, select your image source below: </p>
+
+  <div class="sources">
+    <div class="source_opt" onclick="show_help('goog');">Google Photos</div>
+    <div class="source_opt" onclick="show_help('fb');">Facebook</div>
+    <div class="source_opt" onclick="show_help('gimg');">Google Image search</div>
+    <div class="source_opt" onclick="show_help('other');">Others</div>
+  </div>
+
+  <div id="source_goog" class="photo_source">
+    <h3>Google Photos</h3>
+    <div>
+      For photos stored on Google Photos, when viewing the images the URL will appear starting with <pre> https://photos.google.com/... </pre>,
+      for example: <img src="./help_img/goog_badurl.png" />
+    </div>
+    <div>
+      <em><strong>These URLs will not work!</strong></em> To get a URL that works, first right-click the image and select "Open image in new tab":
+      <img src="./help_img/goog_rghtclick.png" />
+    </div>
+    <div>
+      This will take you to a page with the correct URL. Likely it will be much longer, but will also show only the image and nothing else, and will work with the extension. e.g:
+      <img src="./help_img/goog_goodurl.png" />
+    </div>
+  </div>
+
+  <div id="source_fb" class="photo_source">
+    <h3>Facebook</h3>
+    <div>
+      Photos from Facebook will often appear on URLs that look like <pre> https://facebook.com/photo.php?... </pre>
+      for example: <img src="./help_img/fb_badurl.png" />
+    </div>
+    <div>
+      <em><strong>These URLs will not work!</strong></em> To get a URL that works, first right-click the image and select "Open image in new tab":
+      <img src="./help_img/fb_rghtclick.png" />
+    </div>
+    <div>
+      This will take you to a page with the correct URL. Likely it will be much longer, but will also show only the image and nothing else, and will work with the extension. e.g:
+      <img src="./help_img/fb_goodurl.png" />
+    </div>
+  </div>
+
+  <div id="source_gimg" class="photo_source">
+    <h3>Google Image search</h3>
+    <div>
+      If using Google's image search, each URL will look like <pre> https://www.google.com/search?q=... </pre> and contain many images, for example:
+      for example: <img src="./help_img/goog_imgsearch.png" />
+    </div>
+    <div class="source_pad">
+      <em><strong>This URL will not work!</strong></em> Instead, select the image you want, and when the preview shows on the right,
+      right-click and select "Open image in new tab" (show above). The URL of that new page will be the URL to use.
+    </div>
+  </div>
+
+  <div id="source_other" class="photo_source">
+    <h3>Other</h3>
+    <div class="source_pad">
+      If you have an image from any other source, you can often right-click and select "Open image in new tab", the URL shown will be the URL of the image.
+      For example, this works with all the images in this example page too.
+    </div>
+    <div class="source_pad">
+      Some sites prevent this technique - if you are still having issues, the first recommendation is to switch to one of the other sources listed previously.
+      If this also does not work, please post a message to the extension's
+      <a href="https://chrome.google.com/webstore/detail/custom-calendar-backgroun/acjecbgflnhmeldadcbblhfdimhifpki">support page</a>, or
+      file a bug on this <a href="https://github.com/padster/CalendarThemeExtension">extension's official site</a>.
+    </div>
+  </div>
+</body>
+</html>
