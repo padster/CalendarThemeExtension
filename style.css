@@ -93,9 +93,12 @@ body.xtnDarkOverlay {
 
 
 /* grid borders: */
-.YvjgZe {
+.YvjgZe,
+.t8qpF, /* month */
+.PhLhOd /* month */ {
   border-right-color: var(--oppo-0p1) !important;
 }
+.QIadxc, /* month */
 .mmsF1c::after {
   border-bottom-color: var(--oppo-0p1) !important;
 }
