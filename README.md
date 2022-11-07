@@ -8,6 +8,10 @@ The extension includes a few features:
 * Select between a light and dark overlap to improve text visibility.
 
 ## Recent changes!
+**v1.0.12**
+* Small fix to the month gridlines.
+* Help page added! See [here](https://padster.github.io/CalendarThemeExtension/help.html).
+
 **v1.0.9**
 * Hopefully fix bad encoding on options page, no longer will show random characters.
 * A few more style fixes across light/dark modes.
