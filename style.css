@@ -175,12 +175,20 @@ body.xtnDarkOverlay {
 .Vrr33d,
 .hGcgEd
 {
-  color: var(--oppo) !important;
+  color: var(--oppo) !important; /* Override var(--on-surface) instead? */
 }
 
 .U26fgb.I12f0b .snByac {
   color: var(--heading-text) !important;
 }
+
+.wBon4c, /* calendar list */
+.Zlotdb /* find a time sidebar */
+{
+  --on-surface: var(--oppo) !important;
+}
+
+
 
 /* Popups */
 .BoZa0b,
@@ -323,6 +331,10 @@ body.xtnDarkOverlay {
 }
 
 .U26fgb .snByac {
+  color: var(--button-fg) !important;
+}
+
+.xYvThe:not(:disabled) { /* 'Today' button */
   color: var(--button-fg) !important;
 }
 
