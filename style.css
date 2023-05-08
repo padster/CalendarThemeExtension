@@ -122,6 +122,20 @@ body.xtnDarkOverlay {
   border-top-right-radius: 0px !important;
 }
 
+/* month view */
+.PhLhOd,
+.akJTWe {
+  background-color: var(--oppo-0p1) !important;
+}
+.PhLhOd .wy3aMe,
+.akJTWe {
+  color: var(--oppo) !important;
+}
+
+.dkNwF .yzYBvd {
+  color: var(--oppo) !important;
+}
+
 /* Other: */
 
 #gb,
@@ -138,6 +152,11 @@ body.xtnDarkOverlay {
   background-color: var(--same-0p1) !important;
 }
 
+#gb .yR9sJd.yR9sJd:not(:disabled),
+#gb .JJyfjc {
+  color: var(--button-fg) !important;
+}
+
 
 .SU7tYb.F262Ye,
 .yEkOpe.F262Ye,
@@ -145,10 +164,11 @@ body.xtnDarkOverlay {
 .ef2wWc,
 .AOL3Kb,
 .ZFr60d,
-.Cd9hpd,
-.akJTWe,
+/* .Cd9hpd, */
+/* .akJTWe, */
 .Zlotdb,
-.XnnJrc.Wyo4Qe .TKMrfe {
+.XnnJrc.Wyo4Qe .TKMrfe,
+.Rj2Mlf:not(:disabled) {
   background-color: var(--same-0p1)  !important;
 }
 
@@ -196,7 +216,8 @@ body.xtnDarkOverlay {
 .I7OXgf,
 .gHQcAb,
 .XvhY1d,
-.jefcFd {
+.jefcFd,
+.zC2ZSb {
   color: var(--popup-text) !important;
   --heading-text: var(--popup-text);
   --button-fg: rgba(  0,  0,  0, 0.8);
@@ -250,11 +271,11 @@ body.xtnDarkOverlay {
 }
 
 .pCoqfc,
-.akJTWe,
-.wy3aMe,
+/* .akJTWe, */
+/* .wy3aMe, */
 .SoBqBf,
-.OmwDud,
-.pqE3fc .wy3aMe {
+.OmwDud {
+/* .pqE3fc .wy3aMe { */
   color: var(--same) !important;
 }
 
@@ -453,6 +474,8 @@ div.rF3YF .NMm5M,
 div.rF3YF .Ce1Y1c,
 .uSx8Od,
 .fKz7Od,
+.KU3dEf svg,
+#gb .ec9Aq,
 #xtnBtn
 {
   color: var(--button-fg) !important;
