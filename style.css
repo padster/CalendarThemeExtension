@@ -279,6 +279,17 @@ body.xtnDarkOverlay {
   color: var(--same) !important;
 }
 
+/* Schedule view */
+.bN97Pc .OmwDud {
+  color: var(--oppo-0p8) !important;
+}
+.bN97Pc .SOVd1b {
+  --on-surface: var(--oppo-0p8);
+}
+.bN97Pc .SOVd1b:hover {
+  --on-surface: rgba(  0,  0,  0, 0.8);
+}
+
 .Xro3Db-nUpftc.ymbhmd,
 .wWdzec,
 .Gk2izd {
