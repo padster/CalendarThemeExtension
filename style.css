@@ -344,8 +344,8 @@ body.xtnDarkOverlay {
 
 .r4nke {
   color: var(--heading-text) !important;
+  background-color: var(--oppo-0p1) !important;
 }
-
 
 
 /* Includes the new sidebar. */
