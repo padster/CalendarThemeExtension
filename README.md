@@ -8,6 +8,11 @@ The extension includes a few features:
 * Select between a light and dark overlap to improve text visibility.
 
 ## Recent changes!
+**v2.0.1**
+* Added themes! You can purchase from curated sets of 12 images if you like, or keep using the manual ones.
+* Includes a new website https://calendar.useit.today - see there for links like [themes](https://calendar.useit.today/themes) and [privacy/legal](https://calendar.useit.today/legal).
+* Fixed an issue where users with sync turned off would not have accessible email addresses (currently rolling out).
+
 **v1.0.12**
 * Small fix to the month gridlines.
 * Help page added! See [here](https://padster.github.io/CalendarThemeExtension/help.html).
