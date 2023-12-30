@@ -15,7 +15,7 @@
       height: 3em;
     }
     .title {
-      width: 120px;
+      width: 160px;
       text-align: center;
       font-size: 16px;
     }
@@ -36,6 +36,7 @@
     }
     #demoHolder {
       display: flex;
+      flex-direction: column;
       margin: 0 auto;
       width: 60%;
       height: 60%;
@@ -43,11 +44,9 @@
     #demo {
       display: flex;
       width: 100%;
-      height: 100%;
+      aspect-ratio: 16/10;
       margin: 0 auto;
       background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
       background-position: center;
       background-size: cover;
       border: 1px dashed black;
@@ -93,6 +92,21 @@
     .options a:hover {
       background-color: whitesmoke;
     }
+    #t4Fields .details {
+      font-size: 16px;
+      padding: 16px;
+      line-height: 1.5em;
+    }
+    #t4Fields .details div {
+      padding-bottom: 16px;
+    }
+
+    .new_indicator {
+      color: red;
+      font-size: small;
+      vertical-align: super;
+      margin-left: -4px;
+    }
   </style>
 </head>
 <body>
@@ -101,9 +115,12 @@
 
   <div>
     <div class="options help">
-      <span class="optionTitle">Having trouble with the extension? See: </span>
-      <a href="https://padster.github.io/CalendarThemeExtension/help.html" target=”_blank”>Help Page</a>
+      <!-- <span class="optionTitle">Having trouble with the extension? See: </span> -->
+      <a href="https://calendar.useit.today/help" target=”_blank”>Help Page</a>
       <a href="https://github.com/padster/CalendarThemeExtension" target=”_blank”>Updates & bug reports</a>
+        <a id="purchase_redirect">View and purchase themes</a>
+        <span class="new_indicator" style="margin-left: -12px;">NEW</span>
+        <span id="no_email_error" style="display: none;">(Themes disabled, no email is available. Please enable email access in settings)</span>
     </div>
     <div class="options">
       <span class="optionTitle">Overlay:</span>
@@ -115,6 +132,7 @@
       <label><input id="t1" type="radio" name="type">Single Image</label>
       <label><input id="t2" type="radio" name="type">Monthly Images</label>
       <label><input id="t3" type="radio" name="type">Color</label>
+      <label><input id="t4" type="radio" name="type">Themes <span class="new_indicator">NEW</span></label>
     </div>
     <div id="t1Fields">
       <div class="field">
@@ -182,12 +200,28 @@
         </div>
       </div>
     </div>
+    <div id="t4Fields">
+      <div class="field">
+        <div class="title">Theme access code:</div>
+        <div class="input">
+          <input id="purchase_token" />
+        </div>
+      </div>
+      <div class="details">
+        <div></div>
+        <div>
+          Just like traditional calendars, you can pick from a range of curated themes and pick your favourite set of 12 images. <br />
+          <i>Unlike<i> traditional calendars, these will work for every year! See <a href="https://calendar.useit.today/themes">here</a> for more details. <br />
+          Many sets are available across a range of themes, but please do contact me if you have suggestions for additions, or if you're a photographer who'd like to add a set yourself.<br />
+        </div>
+      </div>
+    </div>
     <button id="save">Save</button>
     <button id="reset">Reset (without save)</button>
     <div id="status"></div>
   </div>
   <div id="demoHolder">
-    Example of what will be shown on the page:
+    <div id="demoHint">Example of what will be shown on the page:</div>
     <div id="demo">
       <div id="sidebar"></div>
     </div>

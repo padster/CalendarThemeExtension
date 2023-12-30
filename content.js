@@ -2,6 +2,11 @@
 var BUTTON_HOLDER_CLASS = 'uW9umb';
 var TOP_BUTTONS_CLASS = 'd6McF';
 
+var PURCHASE_SERVER = 'https://calendar.useit.today';
+// if (chrome.runtime.id == 'fkbpcfnnknjdoolkoaliocdnefpkobhi') {
+//   PURCHASE_SERVER = 'http://localhost:8080'; // Test mode
+// }
+
 var DEFAULT_IMAGE_URLS = [
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/January.jpg',
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/February.jpg',
@@ -19,27 +24,45 @@ var DEFAULT_IMAGE_URLS = [
 
 var DEFAULT_OVERLAY_MODE = 'lghtOverlay';
 
+USER_INFO = null;
+function getUserInfo(cb) {
+  if (USER_INFO != null) {
+    cb(USER_INFO);
+    return;
+  }
+  chrome.runtime.sendMessage({'type': 'getUserInfo'}, function(userInfo) {
+    USER_INFO = userInfo;
+    cb(USER_INFO);
+  });
+}
+
 function setImageStyle() {
   var currentMonth = new Date().getMonth();
+  // Load settings
   chrome.storage.sync.get({
     imageURL: DEFAULT_IMAGE_URLS,
     overlayMode: DEFAULT_OVERLAY_MODE,
   }, function(items) {
-    // Image:
-    var imageArray = items.imageURL;
-    if (!Array.isArray(imageArray)) {
-      imageArray = [imageArray];
-    }
-    var currentMonth = new Date().getMonth();
-    var currentImage = imageArray[currentMonth % imageArray.length];
-    document.getElementById('xtnImg').style.backgroundImage = "url('" +  currentImage + "')";
+    // Also load user details, may be needed for purchased themes:
+    getUserInfo( userInfo => {
+      var imageArray = items.imageURL;
+      if (!Array.isArray(imageArray)) {
+        imageArray = [imageArray];
+      }
+      var currentMonth = new Date().getMonth();
+      var currentUrl = imageArray[currentMonth % imageArray.length];
+      if (currentUrl.indexOf(PURCHASE_SERVER) == 0) {
+        currentUrl += '&u=' + userInfo.email;
+      }
+      document.getElementById('xtnImg').style.backgroundImage = "url('" +  currentUrl + "')";
 
-    // Overlay:
-    if (items.overlayMode == 'darkOverlay') {
-      document.body.classList.add('xtnDarkOverlay');
-    } else {
-      document.body.classList.remove('xtnDarkOverlay');
-    }
+      // Overlay:
+      if (items.overlayMode == 'darkOverlay') {
+        document.body.classList.add('xtnDarkOverlay');
+      } else {
+        document.body.classList.remove('xtnDarkOverlay');
+      }
+    })
   });
 }
 

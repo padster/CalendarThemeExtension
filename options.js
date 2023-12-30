@@ -1,7 +1,15 @@
 var BASE64_KEY = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-var COLOR_PIXEL_PREFIX = "data:image/gif;base64,R0lGODlhAQABAPAA"
+var COLOR_PIXEL_PREFIX = "data:image/gif;base64,R0lGODlhAQABAPAA";
 var COLOR_PIXEL_SUFFIX = "/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
-var DEFAULT_COLOR_HEX = "#ffffff"
+var DEFAULT_COLOR_HEX = "#ffffff";
+
+var PURCHASE_SERVER = 'https://calendar.useit.today';
+// if (chrome.runtime.id == 'fkbpcfnnknjdoolkoaliocdnefpkobhi') {
+//   PURCHASE_SERVER = 'http://localhost:8080'; // Test mode
+// }
+
+var DEFAULT_TOKEN = '';
+var TOKEN_LENGTH = 12;
 
 var DEFAULT_IMAGE_URLS = [
   '//storage.googleapis.com/static.useit.today/wallCalendarImg/January.jpg',
@@ -20,6 +28,15 @@ var DEFAULT_IMAGE_URLS = [
 
 // OVERLAY: either lghtOverlay (default) or darkOverlay
 DEFAULT_OVERLAY_MODE = 'lghtOverlay';
+
+USER_INFO = null;
+function getUserInfo(cb) {
+  if (USER_INFO != null) {
+    cb(USER_INFO);
+    return;
+  }
+  chrome.identity.getProfileUserInfo( {accountStatus: 'ANY'}, userInfo => cb(userInfo) );
+}
 
 // Initialize overlay picker
 function loadOverlayMode(overlayMode) {
@@ -87,19 +104,39 @@ function colorHexToUrl(hexColor) {
   return COLOR_PIXEL_PREFIX + encoded + COLOR_PIXEL_SUFFIX;
 }
 
+// Convert the purchase token + user email + month into the image address to load.
+function monthToPurchaseUrl(fullToken, month, email) {
+  const parts = fullToken.split('/');
+  if (parts.length != 2 || parts[1].length != TOKEN_LENGTH) {
+    return;
+  }
+  const theme = parts[0];
+  const token = parts[1];
+  const monthName = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][month];
+
+  return PURCHASE_SERVER +
+    '/img/' + theme + '/' + monthName + '.jpg' +
+    '?t=' + window.encodeURIComponent(token);
+}
+
 /** When the image changes, update both the picker and the demo image. */
 function updateImageUrl(url) {
-  if (url.indexOf("//") == 0) {
-    url = "https:" + url;
-  }
-  document.getElementById('demo').style.backgroundImage = 'url(' + url + ')';
+  getUserInfo( userInfo => {
+    if (url.indexOf("//") == 0) {
+      url = "https:" + url;
+    }
+    if (url.indexOf(PURCHASE_SERVER) == 0) {
+      url += '&u=' + userInfo.email;
+    }
+    document.getElementById('demo').style.backgroundImage = 'url(' + url + ')';
 
-  isDark = (getOverlayMode() == 'darkOverlay')
-  sideColor = "rgba(255,255,255,0.3)"
-  if (isDark) {
-    sideColor = "rgba(0,0,0,0.3)";
-  }
-  document.getElementById('sidebar').style.backgroundColor = sideColor;
+    isDark = (getOverlayMode() == 'darkOverlay')
+    sideColor = "rgba(255,255,255,0.3)"
+    if (isDark) {
+      sideColor = "rgba(0,0,0,0.3)";
+    }
+    document.getElementById('sidebar').style.backgroundColor = sideColor;
+  });
 }
 
 /** Change which tab of options are visible. */
@@ -109,10 +146,23 @@ function setTab(tab) {
   document.getElementById('t1').checked = (tab == 't1');
   document.getElementById('t2').checked = (tab == 't2');
   document.getElementById('t3').checked = (tab == 't3');
+  document.getElementById('t4').checked = (tab == 't4');
 
   document.getElementById('t1Fields').style.display = ((tab == 't1') ? "block" : "none");
   document.getElementById('t2Fields').style.display = ((tab == 't2') ? "block" : "none");
   document.getElementById('t3Fields').style.display = ((tab == 't3') ? "block" : "none");
+  document.getElementById('t4Fields').style.display = ((tab == 't4') ? "block" : "none");
+
+  // Load user details when looking at the purchase tab
+  getUserInfo( userInfo => {
+    if (!userInfo.email) {
+      document.getElementById('no_email_error').style.display = 'inline-block';
+    } else {
+      document.getElementById('no_email_error').style.display = 'none';
+      redirect_url = PURCHASE_SERVER + '/store?user=' + window.encodeURIComponent(userInfo.email);
+      document.getElementById('purchase_redirect').href = redirect_url;
+    }
+  });
 }
 
 /** Show single tab, and update the one URL to use. */
@@ -140,11 +190,25 @@ function loadColorOption(imageURL, parsedColorHex) {
   updateImageUrl(imageURL);
 }
 
+/** Show tab for user-purchased image sets. */
+function loadPurchasedOption(themeToken) {
+  setTab('t4');
+  document.getElementById('purchase_token').value = themeToken;
+  getUserInfo( userInfo => {
+    var currentMonth = new Date().getMonth();
+    const imageURL = monthToPurchaseUrl(themeToken, currentMonth, userInfo.email);
+    updateImageUrl(imageURL);
+  });
+}
+
 /** Initialize URL from chrome sync options. */
 function loadOptions() {
+  console.log("Loading options for user ... ");
+
   chrome.storage.sync.get({
     imageURL: DEFAULT_IMAGE_URLS,
     overlayMode: DEFAULT_OVERLAY_MODE,
+    themeToken: DEFAULT_TOKEN,
   }, function(items) {
     loadOverlayMode(items.overlayMode);
 
@@ -156,7 +220,19 @@ function loadOptions() {
         loadSingleOption(items.imageURL);
       }
     } else {
-      loadMonthOptions(items.imageURL);
+      if (items.themeToken != DEFAULT_TOKEN) {
+        loadPurchasedOption(items.themeToken);
+      } else {
+        loadMonthOptions(items.imageURL);
+      }
+    }
+
+    // Force switch to the token page if in the URL:
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('token')) {
+      loadPurchasedOption(params.get('token'));
+      savePurchaseOption();
+      return;
     }
   });
 }
@@ -171,6 +247,7 @@ function saveSingleOption() {
   chrome.storage.sync.set({
     imageURL: imageURL,
     overlayMode: getOverlayMode(),
+    // NOTE: doesn't reset themeToken
   }, function() {
     updateImageUrl(imageURL);
     // Update status to let user know options were saved.
@@ -200,6 +277,7 @@ function saveMonthOptions() {
   chrome.storage.sync.set({
     imageURL: imageURL,
     overlayMode: getOverlayMode(),
+    themeToken: DEFAULT_TOKEN, // force back to unset
   }, function() {
     var currentMonth = new Date().getMonth();
     updateImageUrl(imageURL[currentMonth % imageURL.length]);
@@ -220,6 +298,7 @@ function saveColorOptions() {
   chrome.storage.sync.set({
     imageURL: imageURL,
     overlayMode: getOverlayMode(),
+    // NOTE: doesn't reset themeToken
   }, function() {
     updateImageUrl(imageURL);
     // Update status to let user know options were saved.
@@ -231,6 +310,42 @@ function saveColorOptions() {
   });
 }
 
+/** Save purchase option by storing the token. */
+function savePurchaseOption() {
+  // TODO - handle saving an empty string?
+
+  const fullToken = document.getElementById('purchase_token').value;
+  const parts = fullToken.split('/');
+  if (parts.length != 2 || parts[1].length != TOKEN_LENGTH) {
+    // TODO - warn on error
+    alert("Invalid token");
+    return;
+  }
+
+  getUserInfo(userInfo => {
+    var imageURLs = [];
+    for (var i = 0; i < 12; i++) {
+      const url = monthToPurchaseUrl(fullToken, i, userInfo.email);
+      imageURLs.push(url);
+      document.getElementById('urlMonth' + i).value = url;
+    }
+    chrome.storage.sync.set({
+      imageURL: imageURLs,
+      overlayMode: getOverlayMode(),
+      themeToken: fullToken,
+    }, function() {
+      var currentMonth = new Date().getMonth();
+      updateImageUrl(imageURLs[currentMonth % imageURLs.length]);
+      // Update status to let user know options were saved.
+      var status = document.getElementById('status');
+      status.textContent = 'Options saved.';
+      setTimeout(function() {
+        status.textContent = '';
+      }, 1000);
+    });
+  });
+}
+
 /** Persist extension options to chrome sync. */
 function saveOptions() {
   if (!!document.getElementById('t1').checked) {
@@ -239,6 +354,8 @@ function saveOptions() {
     saveMonthOptions();
   } else if (!!document.getElementById('t3').checked) {
     saveColorOptions();
+  } else if (!!document.getElementById('t4').checked) {
+    savePurchaseOption();
   }
 }
 
@@ -259,6 +376,11 @@ function resetColorOption() {
   document.getElementById('color').value = DEFAULT_COLOR_HEX;
 }
 
+/** Change paid calendar back to unused. */
+function resetPurchasedOption() {
+  document.getElementById('purchase_token').value = DEFAULT_TOKEN;
+}
+
 /** Reset current URLs to their defaults. */
 function resetOptions() {
   if (!!document.getElementById('t1').checked) {
@@ -267,6 +389,8 @@ function resetOptions() {
     resetMonthOptions();
   } else if (!!document.getElementById('t3').checked) {
     resetColorOption();
+  } else if (!!document.getElementById('t4').checked) {
+    resetPurchasedOption(); // Keep?
   }
 }
 
@@ -275,9 +399,14 @@ function changeTab(e) {
   setTab(e.target.id);
 }
 
-document.addEventListener('DOMContentLoaded', loadOptions);
-document.getElementById('save').addEventListener('click', saveOptions);
-document.getElementById('reset').addEventListener('click', resetOptions);
-document.getElementById('t1').addEventListener('change', changeTab);
-document.getElementById('t2').addEventListener('change', changeTab);
-document.getElementById('t3').addEventListener('change', changeTab);
+
+function main() {
+  document.addEventListener('DOMContentLoaded', loadOptions);
+  document.getElementById('save').addEventListener('click', saveOptions);
+  document.getElementById('reset').addEventListener('click', resetOptions);
+  document.getElementById('t1').addEventListener('change', changeTab);
+  document.getElementById('t2').addEventListener('change', changeTab);
+  document.getElementById('t3').addEventListener('change', changeTab);
+  document.getElementById('t4').addEventListener('change', changeTab);
+}
+main();
