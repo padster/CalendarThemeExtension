@@ -78,6 +78,7 @@ body.xtnDarkOverlay {
 .gb_Vc .gb_Xd,
 .gb_Tc.gb_Uc,
 .gb_0c .gb_2d,
+.gb_Oa svg,
 .NkK3Fc span[role=heading] {
   color: var(--oppo-0p8) !important;
 }
@@ -131,9 +132,40 @@ body.xtnDarkOverlay {
 .akJTWe {
   color: var(--oppo) !important;
 }
+.RAaXne { background-color: transparent !important; } /* Main grid. */
 
 .dkNwF .yzYBvd {
   color: var(--oppo) !important;
+}
+
+/* month sidebar */
+.RAaXne .ok6kbe,
+.wuX2hf.Wyo4Qe .l4SGD {
+  /* ew */
+  top: 0px !important;
+  color: var(--heading-text) !important;
+  background-color: var(--oppo-0p1) !important;
+}
+
+/* day names in month: */
+.EeuFAf {
+  color: var(--oppo) !important;
+}
+/* day numbers in month: */
+.o5s4T .w48V4c {
+  color: var(--oppo-0p8) !important;
+}
+
+/* dimmed chips: */
+.KF4T6b.UflSff {
+  color: var(--oppo-0p5) !important;
+}
+/* old task chips: */
+.KF4T6b.qqMC3e, .KF4T6b.smECzc {
+  color: var(--oppo-0p5) !important;
+}
+.KF4T6b.smECzc:hover, .KF4T6b.KCIIIb:hover {
+  color: var(--month-chip-hover-text) !important; /* Hovered chips. */
 }
 
 /* Other: */
@@ -154,6 +186,10 @@ body.xtnDarkOverlay {
 
 #gb .yR9sJd.yR9sJd:not(:disabled),
 #gb .JJyfjc {
+  color: var(--button-fg) !important;
+}
+
+#gb .UyW9db {
   color: var(--button-fg) !important;
 }
 
@@ -352,7 +388,6 @@ body.xtnDarkOverlay {
   background-color: var(--primary) !important;
   color: var(--on-primary)  !important;
 }
-
 
 /* Includes the new sidebar. */
 .gboEAb {

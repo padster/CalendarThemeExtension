@@ -8,6 +8,10 @@ The extension includes a few features:
 * Select between a light and dark overlap to improve text visibility.
 
 ## Recent changes:
+**v2.0.3**
+* Fixed style issues after the code for month view changed.
+* Added extra fixes for top bar title & button visibility, and today indicator in the month box on the left.
+
 **v2.0.1**
 * Added themes! You can purchase from curated sets of 12 images if you like, or keep using the manual ones.
 * Includes a new website https://calendar.useit.today - see there for links like [themes](https://calendar.useit.today/themes) and [privacy/legal](https://calendar.useit.today/legal).
