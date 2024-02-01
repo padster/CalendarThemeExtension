@@ -7,7 +7,7 @@ The extension includes a few features:
 * Set a background, either a single color, a single image, or twelve images that change each month.
 * Select between a light and dark overlap to improve text visibility.
 
-## Recent changes!
+## Recent changes:
 **v2.0.1**
 * Added themes! You can purchase from curated sets of 12 images if you like, or keep using the manual ones.
 * Includes a new website https://calendar.useit.today - see there for links like [themes](https://calendar.useit.today/themes) and [privacy/legal](https://calendar.useit.today/legal).
@@ -42,4 +42,4 @@ The extension includes a few features:
 ## Contact
 If you have any issues with the extension, please post them [here](https://github.com/padster/CalendarThemeExtension/issues) on github (preferred) or on the chrome extension's [support page](https://chrome.google.com/webstore/detail/custom-calendar-backgroun/acjecbgflnhmeldadcbblhfdimhifpki?hl=en).
 
-Alternatively, if you'd like to help me keep this extension running, open-source and free, contributions are welcome at [ko-fi](https://ko-fi.com/padsterpat).
+Alternatively, if you'd like to help me keep this extension running, open-source and free, contributions are welcome via [stripe](https://donate.stripe.com/00g4i67pe4JO9pK4gq).

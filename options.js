@@ -318,7 +318,7 @@ function savePurchaseOption() {
   const parts = fullToken.split('/');
   if (parts.length != 2 || parts[1].length != TOKEN_LENGTH) {
     // TODO - warn on error
-    alert("Invalid token");
+    alert("Invalid token - please visit the store and copy the token exactly, or click 'Use in calendar'");
     return;
   }
 

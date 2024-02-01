@@ -347,6 +347,12 @@ body.xtnDarkOverlay {
   background-color: var(--oppo-0p1) !important;
 }
 
+/* Today marker, set back to normal: */
+.p6vobf .r4nke, .p6vobf.pWJCO .r4nke, .p6vobf.pWJCO.q2d9Ze .r4nke {
+  background-color: var(--primary) !important;
+  color: var(--on-primary)  !important;
+}
+
 
 /* Includes the new sidebar. */
 .gboEAb {
