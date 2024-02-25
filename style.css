@@ -162,14 +162,18 @@ body.xtnDarkOverlay {
 
 /* dimmed chips: */
 .KF4T6b.UflSff {
+  color: var(--dimmed) !important;
+}
+.KF4T6b.qqMC3e, .KF4T6b.smECzc { /* old task chips: */
   color: var(--oppo-0p5) !important;
 }
-/* old task chips: */
-.KF4T6b.qqMC3e, .KF4T6b.smECzc {
-  color: var(--oppo-0p5) !important;
+.KF4T6b.smECzc, .KF4T6b.KCIIIb {
+  color: var(--month-chip-hover-text) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 4px;
 }
-.KF4T6b.smECzc:hover, .KF4T6b.KCIIIb:hover {
-  color: var(--month-chip-hover-text) !important; /* Hovered chips. */
+.KF4T6b.smECzc:hover, .KF4T6b.KCIIIb:hover {  /* Hovered chips. */
+  background-color: var(--chip-hover) !important;
 }
 
 /* Other: */
@@ -411,7 +415,7 @@ body.xtnDarkOverlay {
   color: var(--button-fg) !important;
 }
 
-.xYvThe:not(:disabled) { /* 'Today' button */
+.j9Fkxf:not(:disabled) { /* Top bar text buttons */
   color: var(--button-fg) !important;
 }
 
