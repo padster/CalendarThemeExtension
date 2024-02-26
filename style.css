@@ -91,7 +91,13 @@ body.xtnDarkOverlay {
   color: inherit !important;
 }
 
-
+/* day/week side times */
+.R6TFwe {
+  background-color: var(--oppo-0p1) !important
+}
+.R6TFwe .iHNmdb {
+  color: var(--heading-text) !important;
+}
 
 /* grid borders: */
 .YvjgZe,
@@ -600,6 +606,13 @@ div[role="toolbar"] .PqAscf {
   background-color:  var(--oppo-0p8) !important;
 }
 
+/* Lines on day/month view: */
+.sJ9Raf::after {
+  border-bottom-color: var(--oppo-0p1) !important;
+}
+.BiKU4b {
+  border-right-color: var(--oppo-0p1) !important;
+}
 
 /* Weird gradient lines at top of sections */
 .J2aUD.T8M5bd .sx5BGe::before, .SGFqbe.T8M5bd .sx5BGe::before {
