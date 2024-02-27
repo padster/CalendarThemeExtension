@@ -93,10 +93,13 @@ body.xtnDarkOverlay {
 
 /* day/week side times */
 .R6TFwe {
-  background-color: var(--oppo-0p1) !important
+  background-color: transparent !important
 }
 .R6TFwe .iHNmdb {
   color: var(--heading-text) !important;
+}
+.EDDeke {
+  border-right-color: var(--oppo-0p1) !important;
 }
 
 /* grid borders: */

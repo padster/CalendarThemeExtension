@@ -8,6 +8,10 @@ The extension includes a few features:
 * Select between a light and dark overlap to improve text visibility.
 
 ## Recent changes:
+**v2.0.7**
+* 2.0.5, 2.0.6 and 2.0.7 were all small quick style fixes after Google updated their design
+* 5 fixed chip titles for past events, 6 fixed lines in the week/day view, and 7 fixed the time column.
+
 **v2.0.3**
 * Fixed style issues after the code for month view changed.
 * Added extra fixes for top bar title & button visibility, and today indicator in the month box on the left.
