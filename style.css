@@ -228,6 +228,12 @@ body.xtnDarkOverlay {
 .Xro3Db-nUpftc > div {
   background-color: transparent !important;
 }
+
+/* Week/agenda background: */
+.pbeTDb {
+  background-color: transparent !important;
+}
+
 .Xro3Db-nUpftc > div[role="menu"] {
   background-color: white !important;
 }
