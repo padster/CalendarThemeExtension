@@ -41,7 +41,6 @@ body.xtnDarkOverlay {
   --oppo-0p8: rgba(255,255,255, 0.8);
   --oppo: white;
   --same: black;
-
 }
 
 #xtnImgHolder, #xtnImg, #xtnImgFade {
@@ -659,4 +658,34 @@ div[role="toolbar"].Xo3rO {
 div[role="toolbar"].Xo3rO .U26fgb {
   --button-fg: var(--oppo-0p8) !important;
   --button-bg: var(--oppo-0p1) !important;
+}
+
+
+/** 
+NOTE: Calendar started setting their own theme colors with variables.
+These are all overriding back to what we need, but in the future instead
+this should set the variables directly.
+**/
+
+
+/** Overrides for background-color: var(--surface) */
+.gZ8fdb.F262Ye {
+  background-color: transparent !important; /* Background to the all-day events today. */
+}
+
+/** Overrides for color: var(--on-surface) */
+.sVASAd.N4XV7d {
+  color: var(--oppo-0p8) !important; /* Font color for the future numbers in weekly view. */
+}
+.sVASAd.N4XV7d.RKLVef:hover {
+  color: rgba(  0,  0,  0, 0.8) !important;
+}
+
+/** Overrides for color: var(--on-surface-variant-agm) */
+.nSCxEf.pCcXPe,
+.tWjOu.pCcXPe {
+  color: var(--oppo-0p8) !important; /* Font color for past day numbers in weekly view. */
+}
+.nSCxEf.pCcXPe:hover {
+  color: rgba(  0,  0,  0, 0.8) !important;
 }
