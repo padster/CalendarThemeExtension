@@ -303,6 +303,16 @@ body.xtnDarkOverlay {
 
 /* Event edit page: */
 
+/* Background */
+.p9lUpf {
+  background: transparent !important;
+}
+
+/* Title text. */
+.WmnPA:not(.VfPpkd-fmcmS-yrriRe-OWXEXe-OWB6Me) .VfPpkd-fmcmS-wGMbrd {
+  color: var(--oppo-0p8) !important;
+}
+
 .j3nyw .DyOaYd {
   /* Unfortunately, .DyOaYd is below .j3nyw */
   color: rgba(  0,  0,  0, 0.8) !important;
