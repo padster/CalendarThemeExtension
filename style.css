@@ -90,6 +90,20 @@ body.xtnDarkOverlay {
   color: inherit !important;
 }
 
+/* Sidebar... */
+.mkaajd, /* Date picker calendar */
+.k50Dh, .f1QMue, .IOneve,
+.sOjuj,
+.o8t45d /* Calendar lists */ 
+{
+  color: var(--oppo-0p8) !important;
+}
+
+.toUqff /* Calendar list. */ 
+{
+  color: var(--regular-text) !important;
+}
+
 /* day/week side times */
 .R6TFwe {
   background-color: transparent !important
@@ -309,13 +323,29 @@ body.xtnDarkOverlay {
 }
 
 /* Title text. */
+.Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd,
 .WmnPA:not(.VfPpkd-fmcmS-yrriRe-OWXEXe-OWB6Me) .VfPpkd-fmcmS-wGMbrd {
   color: var(--oppo-0p8) !important;
+}
+
+/* Overrides for text witin the form body. */
+.nBzcnc .Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd,
+.ubAIBb .Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd {
+  color: rgba(  0,  0,  0, 0.8) !important; /* Always on light background */
 }
 
 .j3nyw .DyOaYd {
   /* Unfortunately, .DyOaYd is below .j3nyw */
   color: rgba(  0,  0,  0, 0.8) !important;
+}
+
+.mUIrbf-vQzf8d {
+  color: var(--regular-text) !important;
+}
+
+/* Close X */
+.pYTkkf-Bz112c-LgbsSe {
+  color: var(--oppo-0p8) !important;
 }
 
 
@@ -369,11 +399,6 @@ body.xtnDarkOverlay {
   color: var(--oppo) !important;
 }
 
-/* Event resize grab handles. */
-.leOeGd {
-  background-size: 100%;
-  background-image: linear-gradient(to top, var(--same-0p3), var(--same-0p0));
-}
 
 /* Day picker */
 .RDlrG {
@@ -439,7 +464,8 @@ body.xtnDarkOverlay {
   color: var(--button-fg) !important;
 }
 
-.j9Fkxf:not(:disabled) { /* Top bar text buttons */
+.j9Fkxf:not(:disabled), 
+.AeBiU-vQzf8d { /* Top bar text buttons */
   color: var(--button-fg) !important;
 }
 
