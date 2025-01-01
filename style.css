@@ -19,11 +19,13 @@ body {
   --month-chip-text: var(--oppo-0p8);
   --month-chip-hover-text: rgba(  0,  0,  0, 0.8);
 
+  --title-text: var(--oppo-0p8);
   --button-fg: var(--oppo-0p8);
   --button-bg: var(--oppo-0p1);
 
   --minical-background: var(--same-0p1);
   --minical-hover: var(--oppo-0p1);
+  --minical-text: var(--oppo-0p8);
 
   --settings-header-text: var(--oppo-0p8);
   --settings-regular-text: var(--oppo-0p5);
@@ -90,14 +92,22 @@ body.xtnDarkOverlay {
   color: inherit !important;
 }
 
-/* Sidebar... */
-.mkaajd, /* Date picker calendar */
+
+/* Date picker calendar */
 .k50Dh, .f1QMue, .IOneve,
-.sOjuj,
-.o8t45d /* Calendar lists */ 
+.sOjuj
+{
+  color: var(--minical-text) !important;
+}
+
+
+/* Sidebar... */
+.mkaajd, .o8t45d /* Calendar lists */ 
 {
   color: var(--oppo-0p8) !important;
 }
+
+
 
 .toUqff /* Calendar list. */ 
 {
@@ -296,9 +306,11 @@ body.xtnDarkOverlay {
   --button-bg: transparent;
   --regular-text: rgba(  0,  0,  0, 0.8);
   --minical-hover: rgba(  0,  0,  0, 0.1);
+  --minical-text: rgba(  0,  0,  0, 0.8);
 
   --month-chip-text: rgba(  0,  0,  0, 0.8);
   --month-chip-hover-text: rgba(  0,  0,  0, 0.8);
+  --title-text: rgba(  0,  0,  0, 0.8);
 }
 
 .BoZa0b .kMp0We,
@@ -325,7 +337,7 @@ body.xtnDarkOverlay {
 /* Title text. */
 .Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd,
 .WmnPA:not(.VfPpkd-fmcmS-yrriRe-OWXEXe-OWB6Me) .VfPpkd-fmcmS-wGMbrd {
-  color: var(--oppo-0p8) !important;
+  color: var(--title-text) !important;
 }
 
 /* Overrides for text witin the form body. */
@@ -343,9 +355,10 @@ body.xtnDarkOverlay {
   color: var(--regular-text) !important;
 }
 
-/* Close X */
+/* Many primary buttons */
 .pYTkkf-Bz112c-LgbsSe {
-  color: var(--oppo-0p8) !important;
+  color: var(--button-fg) !important;
+  background-color: var(--button-bg) !important;
 }
 
 
