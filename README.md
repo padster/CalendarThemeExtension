@@ -7,7 +7,19 @@ The extension includes a few features:
 * Set a background, either a single color, a single image, or twelve images that change each month.
 * Select between a light and dark overlap to improve text visibility.
 
+_Note: Google Calendar have since added light & dark modes.  
+This extension will eventually read from that setting, but in the meantime, please keep both aligned.  
+Some things may look weird if the extension is in light mode and google calendar is in dark mode, or vice-versa._
+
 ## Recent changes:
+
+**v2.0.14**
+Collection of many small fixes for light & dark view:
+* Fixed chip colors in dark mode.
+* Year view backgound made transparent
+* Popup button text (e.g. appearance / email guests) more visible
+* Background color gradient issue fixed.
+
 **v2.0.7**
 * 2.0.5, 2.0.6 and 2.0.7 were all small quick style fixes after Google updated their design
 * 5 fixed chip titles for past events, 6 fixed lines in the week/day view, and 7 fixed the time column.

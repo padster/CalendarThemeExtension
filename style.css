@@ -15,9 +15,9 @@ body {
 
   --heading-text: var(--oppo-0p8);
   --regular-text: var(--oppo-0p5);
-  --popup-text: #3c4043;
+  --popup-text: var(--gm3-sys-color-on-surface);
   --month-chip-text: var(--oppo-0p8);
-  --month-chip-hover-text: rgba(  0,  0,  0, 0.8);
+  --month-chip-hover-text: var(--oppo-0p8);
 
   --title-text: var(--oppo-0p8);
   --button-fg: var(--oppo-0p8);
@@ -104,7 +104,7 @@ body.xtnDarkOverlay {
 /* Sidebar... */
 .mkaajd, .o8t45d /* Calendar lists */ 
 {
-  color: var(--oppo-0p8) !important;
+  color: var(--title-text) !important;
 }
 
 
@@ -160,6 +160,11 @@ body.xtnDarkOverlay {
 }
 
 /* month view */
+.Wl4EPb {
+  background-color: var(--same-0p1) !important;
+}
+
+/* PhLhOd no longer used? */
 .PhLhOd,
 .akJTWe {
   background-color: var(--oppo-0p1) !important;
@@ -299,18 +304,20 @@ body.xtnDarkOverlay {
 .gHQcAb,
 .XvhY1d,
 .jefcFd,
-.zC2ZSb {
+.zC2ZSb,
+.uW2Fw-P5QLlc /* Appearance popup */
+ {
   color: var(--popup-text) !important;
   --heading-text: var(--popup-text);
-  --button-fg: rgba(  0,  0,  0, 0.8);
+  --button-fg: var(--gm3-sys-color-on-surface-variant);
   --button-bg: transparent;
-  --regular-text: rgba(  0,  0,  0, 0.8);
+  --regular-text: var(--gm3-button-text-label-text-color);
   --minical-hover: rgba(  0,  0,  0, 0.1);
-  --minical-text: rgba(  0,  0,  0, 0.8);
+  --minical-text: var(--gm3-sys-color-on-surface);
 
   --month-chip-text: rgba(  0,  0,  0, 0.8);
   --month-chip-hover-text: rgba(  0,  0,  0, 0.8);
-  --title-text: rgba(  0,  0,  0, 0.8);
+  --title-text: var(--gm3-sys-color-on-surface);
 }
 
 .BoZa0b .kMp0We,
@@ -351,6 +358,7 @@ body.xtnDarkOverlay {
   color: rgba(  0,  0,  0, 0.8) !important;
 }
 
+/* Primary button. */
 .mUIrbf-vQzf8d {
   color: var(--regular-text) !important;
 }
@@ -488,9 +496,11 @@ body.xtnDarkOverlay {
 }
 
 /* Month chips: */
+.KF4T6b.smECzc,
 .g3dbUc.smECzc {
   color: var(--month-chip-text) !important;
 }
+.KF4T6b.smECzc:hover,
 .g3dbUc.smECzc:hover {
   color: var(--month-chip-hover-text) !important;
 }
