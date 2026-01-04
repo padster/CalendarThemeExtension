@@ -133,7 +133,6 @@
       <a href="https://calendar.useit.today/help" target=”_blank”>Help Page</a>
       <a href="https://github.com/padster/CalendarThemeExtension" target=”_blank”>Updates & bug reports</a>
         <a id="purchase_redirect">View and purchase themes</a>
-        <span class="new_indicator" style="margin-left: -12px;">NEW</span>
         <span id="no_email_error" style="display: none;">(Themes disabled, no email is available. Please enable email access in settings)</span>
     </div>
     <div class="options">
@@ -142,11 +141,16 @@
       <label><input id="o2" type="radio" name="overlay">Dark overlay</label>
     </div>
     <div class="options">
+      <span class="optionTitle">Southern hemisphere mode:</span>
+      <label><input id="southern_hemisphere" type="checkbox">Enable</label>
+      <span class="optionDescription">Turn on to fix seasonal alignment by rotating months by 6. <span class="new_indicator">NEW</span></span>
+    </div>
+    <div class="options">
       <span class="optionTitle">Background:</span>
       <label><input id="t1" type="radio" name="type">Single Image</label>
       <label><input id="t2" type="radio" name="type">Monthly Images</label>
       <label><input id="t3" type="radio" name="type">Color</label>
-      <label><input id="t4" type="radio" name="type">Themes <span class="new_indicator">NEW</span></label>
+      <label><input id="t4" type="radio" name="type">Themes</label>
     </div>
     <div id="t1Fields">
       <div class="field">

@@ -23,6 +23,7 @@ var DEFAULT_IMAGE_URLS = [
 ];
 
 var DEFAULT_OVERLAY_MODE = 'lghtOverlay';
+var DEFAULT_SOUTHERN_HEMISPHERE = false;
 
 USER_INFO = null;
 function getUserInfo(cb) {
@@ -42,15 +43,18 @@ function setImageStyle() {
   chrome.storage.sync.get({
     imageURL: DEFAULT_IMAGE_URLS,
     overlayMode: DEFAULT_OVERLAY_MODE,
+    southernHemisphere: DEFAULT_SOUTHERN_HEMISPHERE,
   }, function(items) {
     // Also load user details, may be needed for purchased themes:
     getUserInfo( userInfo => {
+      var monthOffset = items.southernHemisphere ? 6 : 0;
+
       var imageArray = items.imageURL;
       if (!Array.isArray(imageArray)) {
         imageArray = [imageArray];
       }
       var currentMonth = new Date().getMonth();
-      var currentUrl = imageArray[currentMonth % imageArray.length];
+      var currentUrl = imageArray[(currentMonth + monthOffset) % imageArray.length];
       if (currentUrl.indexOf(PURCHASE_SERVER) == 0) {
         currentUrl += '&u=' + userInfo.email;
       }

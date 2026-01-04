@@ -27,7 +27,9 @@ var DEFAULT_IMAGE_URLS = [
 ];
 
 // OVERLAY: either lghtOverlay (default) or darkOverlay
-DEFAULT_OVERLAY_MODE = 'lghtOverlay';
+var DEFAULT_OVERLAY_MODE = 'lghtOverlay';
+// MONTH_OFFSET: Southern hemisphere mode = true/false
+var DEFAULT_SOUTHERN_HEMISPHERE = false;
 
 USER_INFO = null;
 function getUserInfo(cb) {
@@ -52,6 +54,16 @@ function getOverlayMode() {
   } else {
     return 'lghtOverlay';
   }
+}
+
+// Initialize hemisphere picker
+function loadSouthernHemisphereMode(southernHemisphere) {
+  document.getElementById('southern_hemisphere').checked = !!southernHemisphere;
+}
+
+// Read hemisphere mode (gets persisted on image save)
+function getSouthernHemisphereMode() {
+  return !!document.getElementById('southern_hemisphere').checked;
 }
 
 
@@ -179,7 +191,7 @@ function loadMonthOptions(imageURL) {
   for (var i = 0; i < imageURL.length && i < 12; i++) {
     document.getElementById('urlMonth' + i).value = imageURL[i];
   }
-  var currentMonth = new Date().getMonth();
+  var currentMonth = (new Date().getMonth() + (getSouthernHemisphereMode() ? 6 : 0)) % 12;
   updateImageUrl(imageURL[currentMonth % imageURL.length]);
 }
 
@@ -195,7 +207,7 @@ function loadPurchasedOption(themeToken) {
   setTab('t4');
   document.getElementById('purchase_token').value = themeToken;
   getUserInfo( userInfo => {
-    var currentMonth = new Date().getMonth();
+    var currentMonth = (new Date().getMonth() + (getSouthernHemisphereMode() ? 6 : 0)) % 12;
     const imageURL = monthToPurchaseUrl(themeToken, currentMonth, userInfo.email);
     updateImageUrl(imageURL);
   });
@@ -208,9 +220,11 @@ function loadOptions() {
   chrome.storage.sync.get({
     imageURL: DEFAULT_IMAGE_URLS,
     overlayMode: DEFAULT_OVERLAY_MODE,
+    southernHemisphere: DEFAULT_SOUTHERN_HEMISPHERE,
     themeToken: DEFAULT_TOKEN,
   }, function(items) {
     loadOverlayMode(items.overlayMode);
+    loadSouthernHemisphereMode(items.southernHemisphere);
 
     if (!Array.isArray(items.imageURL)) {
       parsedColorHex = urlToMaybeColorHex(items.imageURL);
@@ -247,6 +261,7 @@ function saveSingleOption() {
   chrome.storage.sync.set({
     imageURL: imageURL,
     overlayMode: getOverlayMode(),
+    southernHemisphere: getSouthernHemisphereMode(),
     // NOTE: doesn't reset themeToken
   }, function() {
     updateImageUrl(imageURL);
@@ -277,9 +292,10 @@ function saveMonthOptions() {
   chrome.storage.sync.set({
     imageURL: imageURL,
     overlayMode: getOverlayMode(),
+    southernHemisphere: getSouthernHemisphereMode(),
     themeToken: DEFAULT_TOKEN, // force back to unset
   }, function() {
-    var currentMonth = new Date().getMonth();
+    var currentMonth = new Date().getMonth() + (getSouthernHemisphereMode() ? 6 : 0);
     updateImageUrl(imageURL[currentMonth % imageURL.length]);
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -298,6 +314,7 @@ function saveColorOptions() {
   chrome.storage.sync.set({
     imageURL: imageURL,
     overlayMode: getOverlayMode(),
+    southernHemisphere: getSouthernHemisphereMode(),
     // NOTE: doesn't reset themeToken
   }, function() {
     updateImageUrl(imageURL);
@@ -332,9 +349,10 @@ function savePurchaseOption() {
     chrome.storage.sync.set({
       imageURL: imageURLs,
       overlayMode: getOverlayMode(),
+      southernHemisphere: getSouthernHemisphereMode(),
       themeToken: fullToken,
     }, function() {
-      var currentMonth = new Date().getMonth();
+      var currentMonth = new Date().getMonth() + (getSouthernHemisphereMode() ? 6 : 0);
       updateImageUrl(imageURLs[currentMonth % imageURLs.length]);
       // Update status to let user know options were saved.
       var status = document.getElementById('status');

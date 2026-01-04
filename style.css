@@ -341,6 +341,17 @@ body.xtnDarkOverlay {
   background: transparent !important;
 }
 
+/* Event card: */
+
+.CfZaMd {
+  --gm3-card-filled-container-color: transparent !important;
+  --gm3-button-text-label-text-font: var(--button-fg);
+}
+
+.CfZaMd .mUIrbf-vQzf8d {
+  color: white !important; /* TODO: replace button-fg etc. */
+}
+
 /* Title text. */
 .Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd,
 .WmnPA:not(.VfPpkd-fmcmS-yrriRe-OWXEXe-OWB6Me) .VfPpkd-fmcmS-wGMbrd {
@@ -360,6 +371,7 @@ body.xtnDarkOverlay {
 
 /* Primary button. */
 .mUIrbf-vQzf8d {
+  /* TODO: replace button-fg etc. */
   color: var(--regular-text) !important;
 }
 
