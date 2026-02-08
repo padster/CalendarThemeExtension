@@ -29,7 +29,19 @@ body {
 
   --settings-header-text: var(--oppo-0p8);
   --settings-regular-text: var(--oppo-0p5);
+
+  /* Borders between top cells of week view. */
+  --gm3-sys-color-surface-container-highest: var(--oppo-0p1) !important;
+
+  /* Tabs in edit mode */
+  --gm3-tabs-primary-container-color: var(--same-0p3) !important;
+  --gm3-sys-color-surface-container-low: var(--same-0p3) !important;
+  --gm3-tabs-primary-with-label-text-active-label-text-color: var(--oppo-0p8) !important;
+  --gm3-tabs-primary-with-label-text-active-hover-label-text-color: var(--oppo-0p8) !important;
+  --gm3-tabs-primary-with-label-text-inactive-label-text-color: var(--oppo-0p5) !important;
+  --gm3-tabs-primary-with-label-text-inactive-hover-label-text-color: var(--oppo) !important;
 }
+
 body.xtnDarkOverlay {
   --same-0p0: rgba(  0,  0,  0, 0.0);
   --same-0p1: rgba(  0,  0,  0, 0.1);
@@ -114,16 +126,31 @@ body.xtnDarkOverlay {
   color: var(--regular-text) !important;
 }
 
-/* day/week side times */
+
+/* Sidebar next to grid: */
+  /* Timezone header */
+.sS0sZd {
+  background-color: transparent !important
+}
+.sS0sZd .ouBNcf, .sS0sZd .iHNmdb {
+  color: var(--heading-text) !important;
+}
+
+
+  /* day/week side times */
 .R6TFwe {
   background-color: transparent !important
 }
-.R6TFwe .iHNmdb {
+.R6TFwe .ouBNcf, .R6TFwe .iHNmdb {
   color: var(--heading-text) !important;
 }
 .EDDeke {
   border-right-color: var(--oppo-0p1) !important;
 }
+
+
+/** Borders **/
+
 
 /* grid borders: */
 .YvjgZe,
@@ -158,6 +185,8 @@ body.xtnDarkOverlay {
   border-top-left-radius: 0px !important;
   border-top-right-radius: 0px !important;
 }
+
+/* Borders between top cells of week view. */
 
 /* month view */
 .Wl4EPb {
@@ -257,10 +286,17 @@ body.xtnDarkOverlay {
   background-color: transparent !important;
 }
 
-/* Week/agenda background: */
+/* Week background: */
 .pbeTDb {
   background-color: transparent !important;
+  /* HACK: pbeTDb uses background-color: var(--gm3-sys-color-surface) however we can't set that to transparent, as chip text is also set to that for some reason... */
 }
+
+/* Week/Agenda background: */
+.mXmivb {
+  background-color: transparent !important;
+}
+
 
 .Xro3Db-nUpftc > div[role="menu"] {
   background-color: white !important;
@@ -353,16 +389,12 @@ body.xtnDarkOverlay {
 }
 
 /* Title text. */
-.Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd,
-.WmnPA:not(.VfPpkd-fmcmS-yrriRe-OWXEXe-OWB6Me) .VfPpkd-fmcmS-wGMbrd {
+
+/* Very top input, for event title. Force to be oppo on transparent background. */
+.kVw1pb .Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd {
   color: var(--title-text) !important;
 }
 
-/* Overrides for text witin the form body. */
-.nBzcnc .Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd,
-.ubAIBb .Fgl6fe-fmcmS-yrriRe:not(.Fgl6fe-fmcmS-yrriRe-OWXEXe-OWB6Me) .Fgl6fe-fmcmS-wGMbrd {
-  color: rgba(  0,  0,  0, 0.8) !important; /* Always on light background */
-}
 
 .j3nyw .DyOaYd {
   /* Unfortunately, .DyOaYd is below .j3nyw */
@@ -683,14 +715,6 @@ div[role="toolbar"] .PqAscf {
 .g3dbUc.KCIIIb:hover {
   color: var(--same-0p8) !important;
   background-color:  var(--oppo-0p8) !important;
-}
-
-/* Lines on day/month view: */
-.sJ9Raf::after {
-  border-bottom-color: var(--oppo-0p1) !important;
-}
-.BiKU4b {
-  border-right-color: var(--oppo-0p1) !important;
 }
 
 /* Weird gradient lines at top of sections */

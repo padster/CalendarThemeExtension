@@ -37,6 +37,19 @@ function getUserInfo(cb) {
   });
 }
 
+function maybeShowMismatch(calendarTheme) {
+  chrome.storage.sync.get({
+    overlayMode: DEFAULT_OVERLAY_MODE,
+  }, function(items) {
+    var mismatch = (items.overlayMode == 'darkOverlay' && calendarTheme == 'lght') || 
+                   (items.overlayMode == 'lghtOverlay' && calendarTheme == 'dark');
+    // TODO: Show mismatch warning notification
+    if (mismatch) {
+      console.log("Warning: theme mismatch detected, please change your background extension theme.");
+    }
+  });
+}
+
 function setImageStyle() {
   var currentMonth = new Date().getMonth();
   // Load settings
@@ -66,6 +79,13 @@ function setImageStyle() {
       } else {
         document.body.classList.remove('xtnDarkOverlay');
       }
+
+      // Check for mismatch:
+      var calendarTheme = document.body.classList.contains('CcsDpe') ? 'dark' : 'lght';
+      new MutationObserver(() => {
+        var calendarTheme = document.body.classList.contains('CcsDpe') ? 'dark' : 'lght';
+        maybeShowMismatch(calendarTheme);
+      }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
     })
   });
 }
